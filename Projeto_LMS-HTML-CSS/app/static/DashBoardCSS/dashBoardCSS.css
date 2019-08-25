@@ -1,0 +1,13 @@
+
+/* ######## CONFIGURAÇÃO DO MENU LATERAL (TAMANHO DAS LETRAS)  ############ */
+.list-group-item{
+
+    position: relative;
+    display: block;
+    padding: .75rem 0.65rem !important;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+/* ######## FIM CONFIGURAÇÃO DO MENU LATERAL (TAMANHO DAS LETRAS)  ############ */
