@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html lang="br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Comercial Control</title>
+    <link rel="shortcut icon" href="../../../static/Imagens/logo/LogoComercialControl2.png" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../../static/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../../static/DashBoardCSS/area_adminstradorCSS/gerenciar_Fornecedores.css" rel="stylesheet">
+    <!-- CSS Da Dashboard-->
+    <link href="../../../static/DashBoardCSS/dashBoardCSS.css" rel="stylesheet">
+    <!-- CSS do conteudo Central 
+    <link href="../../../static/DashBoardCSS/area_adminstradorCSS/gerenciar_Estoque.css" rel="stylesheet">
+    -->
+    <link href="../../../static/DashBoardCSS/area_adminstradorCSS/gerenciar_Fornecedores.css" rel="stylesheet">
+</head>
+
+<body class="grey lighten-3">
+
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container-fluid">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="#">
+                    <strong class="blue-text">Gerenciar Fornecedores</strong>
+                </a>
+
+                <!-- Botão Sair -->
+                <a class="btn ml-2 btn-warning" href="../../login.html">Sair</a></li>
+
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+        <!-- Sidebar -->
+        <div class="sidebar-fixed position-fixed">
+
+            <a class="logo-wrapper waves-effect">
+                <img src="../../../static/Imagens/logo/LogoComercialControl2.png" class="img-fluid"
+                    alt="Comercial Control">
+            </a>
+
+            <div class="list-group list-group-flush">
+                <a href="gerenciar_Estoque.html" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-clipboard-check atividades_entregues icone"></i>Gerenciar Estoque</a>
+                <a href="#" class="list-group-item active waves-effect">
+                    <i class="fa fa-pie-chart mr-3"></i>Gerenciar Fornecedores</a>
+                <a href="gerenciar_Usuarios.html" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-user mr-3"></i>Gerenciar Usuarios</a>
+                <a href="calendario_geral.html" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-table mr-3"></i>Calendario </a>
+                <a href="relatorios.html" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fab fa-bitcoin icone"></i>Relatórios</a>
+                <a href="conta_aluno.html" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-user mr-3"></i>Contato</a>
+            </div>
+
+        </div>
+
+
+        <!-- Sidebar -->
+
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="pt-5 mx-lg-5">
+        <div class="container-fluid mt-5">
+
+            <!-- Heading -->
+            <div class="card mb-4">
+
+                <!--Card content-->
+                <div class="cardTitulo">
+
+                    <div class="cardTituloModal">
+
+
+                        <h2 class="modal-title">Preencha os campos para realizar um cadastro ou <br>Digite o CNPJ para consulta
+                        </h2>
+
+                    </div>
+                </div>
+
+                <div class="modal-body">
+
+
+                    <table class="table table-striped custab">
+
+
+                        <form role="form" name="formulario" method="post" onsubmit="return processar('myTable')">
+
+
+
+                            <div class="section-title">
+                                <span class="tag tag-colored">
+                                    <h2>Dados Do Fornecedor &nbsp </h2>
+                                </span>
+                            </div>
+
+
+
+                            <div class="cardTituloModal">
+                                <div class="form-group">
+
+                                    <input type="number" name="senha" id="display_name"
+                                        class="form-control-CNPJ input-lg" placeholder="CNPJ" required autofocus>
+
+                                    <input type="text" name="Nome do Fornecedor" id="display_name"
+                                        class="form-control-texto input-lg" placeholder="Razão Social " required>
+                                    <!--
+                                    <label for="nota fiscal" style="color: aliceblue">DT nota
+                                        fiscal:</label>
+                                    <input class="form-control-data input-lg" type="date"
+                                        value="">
+
+
+                                    <input type="number" class="form-control-NF input-lg"
+                                        name="Número Nota fiscal"
+                                        placeholder="Número da Nota Fiscal">
+
+                                    -->
+
+                                </div>
+                            </div>
+                            <hr class="colorgraph">
+                            </hr> <!-- Linha colorida Divisória-->
+
+                            <div class="section-title">
+                                <span class="tag tag-colored">
+                                    <h2>Dados de endereço</h2>
+                                </span>
+
+                            </div>
+
+                            <div class="cardTituloModal">
+                                <div class="form-group">
+
+
+                                    <input type="number" class="form-control-Cod input-lg" name="Código do produto"
+                                        placeholder="CEP">
+
+                                    <input type="text" name="display_name" id="display_name"
+                                        class="form-control-texto input-lg" placeholder="Endereço" required>
+
+                                    <input type="text" name="display_name" id="display_name"
+                                        class="form-control-texto input-lg" placeholder="Nº de endereço" required>
+                                    <br>
+                                    <input type="text" class="form-control-QTDProduto input-lg" name="display_quant"
+                                        placeholder="Complemento">
+                                    
+                                    <input type="text" class="form-control-QTDProduto input-lg" name="display_quant"
+                                        placeholder="Cidade">
+
+                                    <div class="form-Select-UF">
+                                        <label for="sel1" style="color: aliceblue">Selecione a UF &nbsp</label><br>
+                                        <select class="form-list-UF" id="UF" name="UF">
+                                            <option value="">Selecione</option>
+                                            <option value="AC">AC</option>
+                                            <option value="AL">AL</option>
+                                            <option value="AP">AP</option>
+                                            <option value="AM">AM</option>
+                                            <option value="BA">BA</option>
+                                            <option value="CE">CE</option>
+                                            <option value="DF">DF</option>
+                                            <option value="ES">ES</option>
+                                            <option value="GO">GO</option>
+                                            <option value="MA">MA</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MT">MT</option>
+                                            <option value="MG">MG</option>
+                                            <option value="PA">PA</option>
+                                            <option value="PB">PB</option>
+                                            <option value="PR">PR</option>
+                                            <option value="PE">PE</option>
+                                            <option value="PI">PI</option>
+                                            <option value="RJ">RJ</option>
+                                            <option value="RN">RN</option>
+                                            <option value="RS">RS</option>
+                                            <option value="RO">RO</option>
+                                            <option value="RR">RR</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SP">SP</option>
+                                            <option value="SE">SE</option>
+                                            <option value="TO">TO</option>
+                                        </select>
+                                    </div>
+
+                                    <input type="text" class="form-control-QTDProduto input-lg" name="display_quant"
+                                        placeholder="Nome pessoa para contato">
+
+                                    <input type="text" class="form-control-QTDProduto input-lg" name="display_quant"
+                                        placeholder="Email">
+
+                                    <input type="number" class="form-control-QTDProduto input-lg" name="Numero Telefone"
+                                        placeholder="Telefone">
+                                    <input type="number" class="form-control-QTDProduto input-lg" name="Numero Celular"
+                                        placeholder="Celular">
+
+
+
+
+
+
+
+
+                            </div>
+
+                </div>
+
+
+                </thead>
+
+                </form>
+
+                <input type="submit" value="Adicionar" class="btn btn-primary">
+
+
+
+                <hr class="colorgraph"> <!-- Linha colorida Divisória-->
+
+
+
+                <!-- ######## COMEÇO CARD (Últimos Produtos) ###### -->
+
+
+
+                <div class="section-title">
+                    <span class="tag tag-colored">
+                        <h2>Ultimos Produtos Cadastrados &nbsp</h2>
+                    </span>
+
+                </div>
+
+
+
+
+                <!-- <div class="cardModalConteudo">
+
+                    <h1 class="formatacao-Texto-h1">
+                        Últimos Produtos Cadastrados
+                    </h1>
+                </div>
+
+                -->
+
+                <!-- ########### FIM CARD (ULTIMOS PRODUTOS) ##########  -->
+
+            </div>
+
+            <!-- FIM MODAL CADASTRAR PRODUTO-->
+
+
+            <!-- ########### COMEÇO TABELA DE PRODUTOS ########### -->
+
+
+
+            <table border='1' width='250' height='250'>
+                <tbody id="myTable"></tbody>
+            </table>
+
+            <table class="table movie-table spoiler">
+                <thead>
+                    <tr class="movie-table-head">
+                        <th>Código do Produto</th>
+                        <th>Nome do Produto</th>
+                        <th>Categoria do produto</th>
+                        <th>Valor de Compra </th>
+                        <th>Valor de Venda</th>
+                        <th>QTD em Estoque</th>
+                        <th>Data de Cadastro</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!--row-->
+                    <tr class="dark-row">
+                        <td>#005</td>
+                        <td>LACO COLORIDO C10 11MMX210MM</td>
+                        <td>Enfeite</td>
+                        <td>R$ 180,00</td>
+                        <td> <span style="color:green;">R$ 0,65</span> </td>
+                        <td> <span style="color:green ;">600</span></td>
+                        <td>12/07/2019</td>
+                        <td>Indefinido</td>
+                    </tr>
+                    <!--/.row-->
+
+                    <!--row-->
+                    <tr class="light-row">
+                        <td>#004</td>
+                        <td>PULSEIRA FINA EVANGÉLICA</td>
+                        <td>Acessório</td>
+                        <td>R$ 300,00</td>
+                        <td> <span style="color:green;">R$ 5,00</span></td>
+                        <td> <span style="color:rgb(192, 9, 9);">10</span></td>
+                        <td>22/04/2019</td>
+                        <td>Indefinido</td>
+                    </tr>
+                    <!--/.row-->
+
+                    <!--row-->
+                    <tr class="dark-row">
+                        <td>#003</td>
+                        <td>BARALHO PAPEL TIGER</td>
+                        <td>Jogos</td>
+                        <td>R$400,00</td>
+                        <td> <span style="color:green;">R$ 2,00</span> </td>
+                        <td> <span style="color:green;">25</span> </td>
+                        <td>20/03/2019</td>
+                        <td>Indefinido</td>
+                    </tr>
+                    <!--/.row-->
+
+                    <!--row-->
+                    <tr class="light-row">
+                        <td>#002</td>
+                        <td>FOLHAGEM ARTIFICIAL DE PLÁSTICO</td>
+                        <td>Artesanato</td>
+                        <td>R$500,00</td>
+                        <td> <span style="color:green;">R$ 0,25</span></td>
+                        <td> <span style="color:green;">125</span> </td>
+                        <td>08/01/2019</td>
+                        <td>Indefinido</td>
+                    </tr>
+                    <!--/.row-->
+
+                    <!--row-->
+                    <tr class="dark-row">
+                        <td>#001</td>
+                        <td>PULSEIRA FINA BRASIL COLORIDA 22 CM</td>
+                        <td>Acessório</td>
+                        <td>R$5.000,00</td>
+                        <td> <span style="color:green;">R$10,00</span></td>
+                        <td> <span style="color:red;">2</span></td>
+                        <td>12/06/2014</td>
+                        <td>Indefinido</td>
+                    </tr>
+
+
+                    <!--/.row-->
+
+
+
+                </tbody> <!-- ########### FIM TABELA DE PRODUTOS ########### -->
+
+
+
+            </table>
+
+            <!--FIM DO QUADRADO DO CADASTRAR PRODUTO (NÃO APAGAR)-->
+
+            </table>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="btn-group">
+
+                <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>
+                    Cadastrar</button>
+                <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>
+                    Sair</button>
+            </div>
+        </div>
+
+        </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+        </div><!-- /.modal -->
+
+
+        </div>
+
+        </div>
+        <!-- Heading -->
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+
+
+        </div>
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footerRolagem text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+        <!--Copyright-->
+        <div class="card-body text-center">
+            <h4 class="text-white">
+                <p>&copy; Copyright Comercial Control 2019 </p>
+            </h4>
+            <p class="h5 text-white"> for Ecommerce, marketplace, booking websites
+                and product landing pages</p> <br>
+        </div>
+        <!--/.Copyright-->
+    </footer>
+    <!--/.Footer-->
+
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="../../../static/JS/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../../static/JS/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../../static/JS/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../../static/JS/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
+
+
+</body>
+
+</html>
