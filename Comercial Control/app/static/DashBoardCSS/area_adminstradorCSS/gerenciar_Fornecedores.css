@@ -387,7 +387,9 @@ h2{
 
 .form-list-UF{
     
-    padding: .375rem .75rem;
+    
+    
+    width: 54%;
     font-size: 1rem;
     line-height: 1.5;
     color: #495057;
@@ -404,7 +406,7 @@ h2{
 .form-Select-UF {
 
     display: inline-flex;
-    width: 39%;
+    width: 26%;
     height: 38px;
     padding: .375rem .75rem;
     font-size: 1rem;

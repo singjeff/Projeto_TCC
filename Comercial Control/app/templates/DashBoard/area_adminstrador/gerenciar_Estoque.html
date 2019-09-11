@@ -106,8 +106,10 @@
 
                     <div class="col-lg-4">
                         <div class="our-team-main">
-                            <!-- ############ INICIO MODAL PRIMERA TURMA-MANHA ###########3-->
-                            <div id="myModalSala1" class="modal fade in">
+
+                            <!-- ############ INICIO 1° CARD (Cadastrar Produto) ###########-->
+
+                            <div id="cadastarProduto" class="modal fade in">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -117,10 +119,15 @@
                                             <a class="btn btn-default" data-dismiss="modal">Voltar<span
                                                     class="glyphicon glyphicon-remove"></span></a>
 
+
+                                            <!-- ######### INICIO CONTEUDO 1° CARD ########## -->
+
+
                                             <div class="cardTituloModal">
 
 
-                                                <h2 class="modal-title">Preencha os campos para realizar um cadastro
+                                                <h2 class="modal-title">Preencha os campos para realizar
+                                                    um cadastro
                                                 </h2>
 
                                             </div>
@@ -128,13 +135,7 @@
 
                                         <div class="modal-body">
 
-
                                             <table class="table table-striped custab">
-
-
-                                                <form role="form" name="formulario" method="post" onsubmit="return processar('myTable')">
-
-
 
                                                     <div class="section-title">
                                                         <span class="tag tag-colored">
@@ -142,14 +143,13 @@
                                                         </span>
                                                     </div>
 
-
-
                                                     <div class="cardTituloModal">
                                                         <div class="form-group">
 
-                                                            <input type="number" name="senha"
-                                                                id="display_name" class="form-control-CNPJ input-lg"
-                                                                placeholder="CNPJ" required autofocus>
+                                                            <input type="text" name="CNPJ" id="display_name"
+                                                                class="form-control-CNPJ input-lg" placeholder="CNPJ"
+                                                                required autofocus>
+
 
                                                             <input type="text" name="Nome do Fornecedor"
                                                                 id="display_name" class="form-control-texto input-lg"
@@ -180,7 +180,7 @@
 
                                                     </div>
 
-                                                    <div class="cardTituloModal">
+                                                    <div class="cardModalConteudo">
                                                         <div class="form-group">
 
 
@@ -197,21 +197,15 @@
                                                                 onKeyUp="mascaraMoeda(this, event)" value=""
                                                                 placeholder="Digite o valor do produto " required>
 
-
-
-
-
                                                             <br>
                                                             <input type="number"
                                                                 class="form-control-QTDProduto input-lg"
                                                                 name="display_quant" placeholder="Quatidade do produto"
                                                                 min="1">
 
-
-
-
                                                             <br><br>
-                                                            <div class="form-Select-Style1">
+                                                            <div class="form-Select-MarcaProduto">
+
                                                                 <label for="sel1" style="color: aliceblue">Marca do
                                                                     produto</label><br>
                                                                 <select class="form-list" id="sel1">
@@ -220,134 +214,72 @@
                                                                     <option>Faber castell</option>
                                                                 </select>
                                                             </div>
-
-
-
                                                         </div>
-
-
 
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-6 col-md-6">
                                                                 <div class="form-group">
 
-                                                                    <div class="form-Select-Style2">
+                                                                    <div class="form-Select-CategoriaProduto">
                                                                         <label for="sel1"
                                                                             style="color: aliceblue">Categoria
                                                                             do
                                                                             produto</label>
                                                                         <select class="form-list" id="sel1">
-                                                                            <option>Selecione a categoria do produto
+                                                                            <option>Selecione a
+                                                                                categoria do produto
                                                                             </option>
                                                                             <option>Brinquedo</option>
-                                                                            <option>Doce</option>
-                                                                            <option>Salgado</option>
+                                                                            <option>Acessório</option>
+                                                                            <option>Jogos</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
-
-
                                                             </div>
                                                         </div>
-
-
-
-
-
-
 
                                                         <div class="row">
                                                             <div class="col-xs-12 col-sm-6 col-md-6">
                                                                 <div class="form-group">
 
-
-                                                                    <div class="form-Select-Style3">
+                                                                    <div class="form-ValorTotal">
                                                                         <label for="sel1" style="color: aliceblue">Valor
-                                                                            de
-                                                                            Compra </label>
+                                                                            Total</label>
+
                                                                         <input type="text" name="display_name"
                                                                             class="form-list input-lg" readonly=“true”
                                                                             onKeyUp="mascaraMoeda(this, event)" value=""
                                                                             placeholder="Valor somado " required>
-
                                                                     </div>
                                                                 </div>
-
-
                                                             </div>
-
                                                         </div>
-
-
-
-
-
 
                                                         <div class="col-12">
+                                                            <textarea class="form-control"
+                                                                placeholder="Descrição do produto" rows="2"></textarea>
 
-                                                            <div class="form-group">
-
-                                                                <textarea class="form-control"
-                                                                    id="exampleFormControlTextarea1"
-                                                                    placeholder="Descrição do produto"
-                                                                    rows="2"></textarea>
-                                                            </div>
                                                         </div>
-
-
-
-
-                                                        <!-- Definir melhor o que fazer com isso 
-                                                            
-                                                        <div class="col-xs-12 col-sm-6 col-md-6">
-                                                            <div class="form-group">
-                                                                <input type="time" name="fechamento" id="fechamento"
-                                                                    class="form-control input-lg" tabindex="5">
-                                                                <p class="help-block">Fim da jornada </p>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        -->
 
                                                     </div>
-
                                         </div>
-
-
                                         </thead>
-
                                         </form>
 
-                                        <input type="submit" value="Adicionar" class="btn btn-primary"> 
-                                            
-
+                                        <input type="submit" value="Adicionar" class="btn btn-primary">
 
                                         <hr class="colorgraph"> <!-- Linha colorida Divisória-->
-
 
 
                                         <!-- ######## COMEÇO CARD (Últimos Produtos) ###### -->
 
 
-
                                         <div class="section-title">
                                             <span class="tag tag-colored">
-                                                <h2>Ultimos Produtos Cadastrados &nbsp</h2>
+                                                <h2 class>Informações do Lote atual &nbsp</h2>
                                             </span>
 
                                         </div>
-
-
-
-
-                                        <!-- <div class="cardModalConteudo">
-
-                                            <h1 class="formatacao-Texto-h1">
-                                                Últimos Produtos Cadastrados
-                                            </h1>
-                                        </div>
-
-                                        -->
 
                                         <!-- ########### FIM CARD (ULTIMOS PRODUTOS) ##########  -->
 
@@ -358,12 +290,6 @@
 
                                     <!-- ########### COMEÇO TABELA DE PRODUTOS ########### -->
 
-
-
-                                    <table border='1' width='250' height='250'>
-                                            <tbody id="myTable"></tbody>
-                                        </table>
-
                                     <table class="table movie-table spoiler">
                                         <thead>
                                             <tr class="movie-table-head">
@@ -371,7 +297,7 @@
                                                 <th>Nome do Produto</th>
                                                 <th>Categoria do produto</th>
                                                 <th>Valor de Compra </th>
-                                                <th>Valor de Venda</th>
+                                                <th>Valor de Venda/unidade</th>
                                                 <th>QTD em Estoque</th>
                                                 <th>Data de Cadastro</th>
                                                 <th>Descrição</th>
@@ -443,24 +369,30 @@
                                                 <td>Indefinido</td>
                                             </tr>
 
-
+                                            <tr class="valor_total-row">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td> </td>
+                                                <td> </td>
+                                                <td><span style="color:white;">Valor Total</span></td>
+                                                <td><span style="color:white;">R$6.380,50</span></td>
+                                            </tr>
                                             <!--/.row-->
 
 
+                                        </tbody>
 
-                                        </tbody> <!-- ########### FIM TABELA DE PRODUTOS ########### -->
-
-
+                                        <!-- ########### FIM TABELA DE PRODUTOS ########### -->
 
                                     </table>
 
                                     <!--FIM DO QUADRADO DO CADASTRAR PRODUTO (NÃO APAGAR)-->
 
                                     </table>
-
-
-
                                 </div>
+
                                 <div class="modal-footer">
                                     <div class="btn-group">
 
@@ -471,14 +403,13 @@
                                             Sair</button>
                                     </div>
                                 </div>
-
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dalog -->
                     </div><!-- /.modal -->
 
-                    <a data-toggle="modal" href="#myModalSala1" class="link">
+                    <a data-toggle="modal" href="#cadastarProduto" class="link">
 
-                        <!--############# FIM MODAL DA PRIMEIRA TURMA-MANHÃ ########  -->
+                        <!--############# FIM CONTEUDO 1° CARD ########  -->
 
 
                         <!--####### CONFIGURAÇÕES DA SALA -->
@@ -498,13 +429,13 @@
                 </div> </a> <!-- Link Fecha Aqui-->
             </div>
 
-            <!--Fim 1° Curso-->
+            <!--Fim 1° Card-->
 
-            <!--2 Quadrado-->
+            <!--2 CARD -->
             <div class="col-lg-4">
                 <div class="our-team-main">
 
-                    <!-- ############ INICIO MODAL GERENCIAR PRODUTO ###########3-->
+                    <!-- ############ INICIO 2° CARD (GERENCIAR PRODUTO) ###########3-->
                     <div id="myModalSala2" class="modal fade in">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -515,7 +446,7 @@
                                 </div>
 
 
-                                <!-- INCIO TABELA 2 MODAL (CRUD) -->
+                                <!--  INCIO TABELA 2 MODAL (CRUD) -->
 
 
                                 <div class="container">
@@ -524,13 +455,16 @@
                                             <div class="panel-heading">
                                                 <div class="cardTituloModal">
 
-                                                    <h2 class="modal-title">Consulte, altere ou exclua produtos
+                                                    <h2 class="modal-title">Consulte, altere ou exclua
+                                                        produtos
                                                         cadastrados !
                                                     </h2>
                                                 </div>
+
                                                 <div class="pull-right">
                                                     <button class="btn btn-default btn-xs btn-filter"><span
-                                                            class="glyphicon glyphicon-filter"></span> Filtrar</button>
+                                                            class="glyphicon glyphicon-filter"></span>
+                                                        Filtrar</button>
                                                 </div>
                                             </div>
                                             <table class="table">
@@ -543,7 +477,11 @@
                                                         <th><input type="text" class="form-control"
                                                                 placeholder="Categoria" disabled></th>
                                                         <th><input type="text" class="form-control"
-                                                                placeholder="Data de Cadastro" disabled>
+                                                                placeholder="Quantidade" disabled></th>
+                                                        <th><input type="text" class="form-control"
+                                                                placeholder="Data Cadastro" disabled>
+                                                        </th>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -551,6 +489,7 @@
                                                         <td>1</td>
                                                         <td>PULSEIRA FINA BRASIL COLORIDA 22 CM</td>
                                                         <td>Acessório</td>
+                                                        <td>2</td>
                                                         <td>12/06/2014 </td>
                                                         <td class="text-center"><a class='btn btn-success btn-xs'
                                                                 href="#"><span
@@ -563,6 +502,7 @@
                                                         <td>2</td>
                                                         <td>FOLHAGEM ARTIFICIAL DE PLÁSTICO</td>
                                                         <td>Artesanato</td>
+                                                        <td>125</td>
                                                         <td>08/01/2019</td>
                                                         <td class="text-center"><a class='btn btn-success btn-xs'
                                                                 href="#"><span
@@ -575,6 +515,7 @@
                                                         <td>3</td>
                                                         <td>BARALHO PAPEL TIGER</td>
                                                         <td>Jogos</td>
+                                                        <td>25</td>
                                                         <td>20/03/2019</td>
                                                         <td class="text-center"><a class='btn btn-success btn-xs'
                                                                 href="#"><span
@@ -584,9 +525,10 @@
                                                                     class="glyphicon glyphicon-edit"></span>Excluir</a>
                                                     </tr>
                                                     <tr>
-                                                        <td>3</td>
-                                                        <td>BARALHO PAPEL TIGER</td>
-                                                        <td>Jogos</td>
+                                                        <td>4</td>
+                                                        <td>Vuvuzela do Brasil</td>
+                                                        <td>Brinquedo</td>
+                                                        <td>100</td>
                                                         <td>20/03/2019</td>
                                                         <td class="text-center"><a class='btn btn-success btn-xs'
                                                                 href="#"><span
@@ -637,23 +579,30 @@
             </div>
 
             <!-- ############ FIM CONFIGURAÇÕES DA SALA ###########-->
-            <!--Fim 2 Quadrado-->
+            
+            <!--Fim 2° CARD-->
 
-            <!-- 3 curso-->
+            <!-- 3° CARD-->
             <div class="col-lg-4">
                 <div class="our-team-main">
 
-                    <!-- ############ INICIO MODAL TERCEIRA TURMA-MANHÃ ###########3-->
+                    <!-- ############ INICIO 3° CARD (CADASTRAR CATEGORIA) ###########-->
                     <div id="myModalSala3" class="modal fade in">
                         <div class="modal-dialog">
                             <div class="modal-content">
 
                                 <div class="modal-header">
-                                    <a class="btn btn-default" data-dismiss="modal">Sair<span
+                                    <a class="btn btn-default" data-dismiss="modal">Voltar<span
                                             class="glyphicon glyphicon-remove"></span></a>
+
+
+
+                                    <!-- ###### INICIO CONTEUDO 3° CARD ######-->
+
                                     <div class="cardTituloModal">
 
-                                        <h2 class="modal-title">Preencha os campos para realizar um cadastro
+                                        <h2 class="modal-title">Preencha os campos para realizar um
+                                            cadastro
                                         </h2>
                                     </div>
                                 </div>
@@ -661,7 +610,7 @@
                                     <table class="table table-striped custab">
 
 
-                                        <div class="cardModalEspecialTitulo">
+                                        <div class="cardModalConteudo">
                                             <h2 class="modal-title">Cadastre uma Categoria de produto
                                             </h2>
 
@@ -719,21 +668,99 @@
             </div>
             <!--Fim 3º-->
 
+            <!-- 4° CARD ( CADASTRAR MARCA) -->
+            <div class="col-lg-4">
+                <div class="our-team-main">
+
+                    <!-- ############ INICIO MODAL 4° CARD ###########3-->
+                    <div id="myModalSala4" class="modal fade in">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <a class="btn btn-default" data-dismiss="modal">Voltar<span
+                                            class="glyphicon glyphicon-remove"></span></a>
+                                    <div class="cardTituloModal">
 
 
 
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
+                                        <!-- ###### INICIO CONTEUDO 4° CARD ######-->
+
+                                        <h2 class="modal-title">Preencha os campos para realizar um
+                                            cadastro
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table table-striped custab">
+
+
+                                        <div class="cardModalConteudo">
+                                            <h2 class="modal-title">Cadastre uma Marca de produto
+                                            </h2>
+
+
+
+                                            <div class="form-group">
+
+                                                <input type="number" name="Código_da_categoria" id="display_name"
+                                                    class="form-control-texto-CategoriaProduto input-lg"
+                                                    placeholder="Digite o código da marca" tabindex="3" required>
+
+                                                <input type="text" name="Nome_da_marca" id="display_name"
+                                                    class="form-control-texto-CategoriaProduto input-lg"
+                                                    placeholder="Nome da marca " tabindex="3" required>
+                                            </div>
+
+
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="btn-group">
+                                        <button class="btn btn-danger" data-dismiss="modal"><span
+                                                class="glyphicon glyphicon-remove"></span>
+                                            Cancelar</button>
+                                        <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>
+                                            Salvar</button>
+                                    </div>
+                                </div>
+
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dalog -->
+                    </div><!-- /.modal -->
+
+                    <a data-toggle="modal" href="#myModalSala4" class="link">
+                        <!--############# FIM  4° CARD (CADASTRAR MARCA)   ########  -->
+
+                        <!--####### CONFIGURAÇÕES DA SALA -->
+                        <div class="team-front">
+                            <img src="../../../static/Imagens/icon/icone_de_cadastrar_marca.png" class="img-fluid" />
+                            <h3>Cadastrar Marca</h3>
+                            <p>
+                                <'Click para cadastrar uma nova Marca'>
+                            </p>
+                        </div>
+
+                        <div class="team-back">
+                            <span>
+                                Cadaster uma Marca!
+                            </span>
+                        </div>
+
+                    </a> <!-- Link Fecha Aqui-->
+                </div>
+            </div>
+            <!--Fim 4º-->
 
         </div>
-        <!--/.Card-->
-
         </div>
-        <!--Grid column-->
+        </div>
+        </div>
+        </div>
+        </div>
+        </div><!--/.Card-->
+        </div><!--Grid column-->
+
         <br>
         <br>
         <br>
@@ -745,13 +772,20 @@
     <!--Main layout-->
 
     <!--Footer-->
-    <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+    <footer class="page-footerRoolagem text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
         <!--Copyright-->
         <div class="card-body text-center">
             <h4 class="text-white">
-                <p>&copy; Copyright Comercial Control 2019 </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &copy; Copyright Comercial Control 2019 </p>
             </h4>
-            <p class="h5 text-white"> for Ecommerce, marketplace, booking websites
+            <p class="h5 text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                for Ecommerce, marketplace, booking websites
                 and product landing pages</p> <br>
         </div>
         <!--/.Copyright-->
@@ -769,11 +803,14 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="../../../static/JS/mdb.min.js"></script>
     <!--Mascaras de formulario-->
-    <script type="text/javascript" src="../../../static/JS/area_adminstrador/gerenciar_Estoque/mascaras_de_formulario.js"></script>
+    <script type="text/javascript"
+        src="../../../static/JS/area_adminstrador/gerenciar_Estoque/mascaras_de_formulario.js"></script>
     <!---Filtro da tabela (gerenciar produto) -->
-    <script type="text/javascript" src="../../../static/JS/area_adminstrador/gerenciar_Estoque/tabela_com_filtro.js"></script>
+    <script type="text/javascript" src="../../../static/JS/area_adminstrador/gerenciar_Estoque/tabela_com_filtro.js">
+    </script>
     <!-- Criação de tabela dinâmica -->
-    <script type="text/javascript" src="../../../static/JS/area_adminstrador/gerenciar_Estoque/criacao_tabela_dinamica.js"></script>
+    <script type="text/javascript"
+        src="../../../static/JS/area_adminstrador/gerenciar_Estoque/criacao_tabela_dinamica.js"></script>
 
 
     <!-- Initializations -->

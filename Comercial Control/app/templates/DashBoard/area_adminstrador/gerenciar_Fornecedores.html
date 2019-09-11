@@ -96,7 +96,8 @@
                     <div class="cardTituloModal">
 
 
-                        <h2 class="modal-title">Preencha os campos para realizar um cadastro ou <br>Digite o CNPJ para consulta
+                        <h2 class="modal-title">Preencha os campos para realizar um cadastro ou <br>Digite o CNPJ para
+                            consulta
                         </h2>
 
                     </div>
@@ -108,7 +109,7 @@
                     <table class="table table-striped custab">
 
 
-                        <form role="form" name="formulario" method="post" onsubmit="return processar('myTable')">
+                        <form role="form">
 
 
 
@@ -128,19 +129,6 @@
 
                                     <input type="text" name="Nome do Fornecedor" id="display_name"
                                         class="form-control-texto input-lg" placeholder="Razão Social " required>
-                                    <!--
-                                    <label for="nota fiscal" style="color: aliceblue">DT nota
-                                        fiscal:</label>
-                                    <input class="form-control-data input-lg" type="date"
-                                        value="">
-
-
-                                    <input type="number" class="form-control-NF input-lg"
-                                        name="Número Nota fiscal"
-                                        placeholder="Número da Nota Fiscal">
-
-                                    -->
-
                                 </div>
                             </div>
                             <hr class="colorgraph">
@@ -168,12 +156,12 @@
                                     <br>
                                     <input type="text" class="form-control-QTDProduto input-lg" name="display_quant"
                                         placeholder="Complemento">
-                                    
+
                                     <input type="text" class="form-control-QTDProduto input-lg" name="display_quant"
                                         placeholder="Cidade">
 
                                     <div class="form-Select-UF">
-                                        <label for="sel1" style="color: aliceblue">Selecione a UF &nbsp</label><br>
+                                        <label for="sel1" style="color: aliceblue">UF: &nbsp</label><br>
                                         <select class="form-list-UF" id="UF" name="UF">
                                             <option value="">Selecione</option>
                                             <option value="AC">AC</option>
@@ -217,176 +205,29 @@
                                     <input type="number" class="form-control-QTDProduto input-lg" name="Numero Celular"
                                         placeholder="Celular">
 
-
-
-
-
-
-
-
+                                </div>
                             </div>
+                            </thead>
+                        </form>
+                    </table>
 
+                    <!--FIM CARD CADASTRAR PRODUTO-->
+
+                    </table>
                 </div>
 
+                <div class="modal-footer">
+                    <div class="btn-group">
 
-                </thead>
-
-                </form>
-
-                <input type="submit" value="Adicionar" class="btn btn-primary">
-
-
-
-                <hr class="colorgraph"> <!-- Linha colorida Divisória-->
-
-
-
-                <!-- ######## COMEÇO CARD (Últimos Produtos) ###### -->
-
-
-
-                <div class="section-title">
-                    <span class="tag tag-colored">
-                        <h2>Ultimos Produtos Cadastrados &nbsp</h2>
-                    </span>
-
+                        <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>
+                            Cadastrar</button>
+                        <button class="btn btn-danger" data-dismiss="modal"><span
+                                class="glyphicon glyphicon-remove"></span>
+                            Sair</button>
+                    </div>
                 </div>
 
-
-
-
-                <!-- <div class="cardModalConteudo">
-
-                    <h1 class="formatacao-Texto-h1">
-                        Últimos Produtos Cadastrados
-                    </h1>
-                </div>
-
-                -->
-
-                <!-- ########### FIM CARD (ULTIMOS PRODUTOS) ##########  -->
-
-            </div>
-
-            <!-- FIM MODAL CADASTRAR PRODUTO-->
-
-
-            <!-- ########### COMEÇO TABELA DE PRODUTOS ########### -->
-
-
-
-            <table border='1' width='250' height='250'>
-                <tbody id="myTable"></tbody>
-            </table>
-
-            <table class="table movie-table spoiler">
-                <thead>
-                    <tr class="movie-table-head">
-                        <th>Código do Produto</th>
-                        <th>Nome do Produto</th>
-                        <th>Categoria do produto</th>
-                        <th>Valor de Compra </th>
-                        <th>Valor de Venda</th>
-                        <th>QTD em Estoque</th>
-                        <th>Data de Cadastro</th>
-                        <th>Descrição</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <!--row-->
-                    <tr class="dark-row">
-                        <td>#005</td>
-                        <td>LACO COLORIDO C10 11MMX210MM</td>
-                        <td>Enfeite</td>
-                        <td>R$ 180,00</td>
-                        <td> <span style="color:green;">R$ 0,65</span> </td>
-                        <td> <span style="color:green ;">600</span></td>
-                        <td>12/07/2019</td>
-                        <td>Indefinido</td>
-                    </tr>
-                    <!--/.row-->
-
-                    <!--row-->
-                    <tr class="light-row">
-                        <td>#004</td>
-                        <td>PULSEIRA FINA EVANGÉLICA</td>
-                        <td>Acessório</td>
-                        <td>R$ 300,00</td>
-                        <td> <span style="color:green;">R$ 5,00</span></td>
-                        <td> <span style="color:rgb(192, 9, 9);">10</span></td>
-                        <td>22/04/2019</td>
-                        <td>Indefinido</td>
-                    </tr>
-                    <!--/.row-->
-
-                    <!--row-->
-                    <tr class="dark-row">
-                        <td>#003</td>
-                        <td>BARALHO PAPEL TIGER</td>
-                        <td>Jogos</td>
-                        <td>R$400,00</td>
-                        <td> <span style="color:green;">R$ 2,00</span> </td>
-                        <td> <span style="color:green;">25</span> </td>
-                        <td>20/03/2019</td>
-                        <td>Indefinido</td>
-                    </tr>
-                    <!--/.row-->
-
-                    <!--row-->
-                    <tr class="light-row">
-                        <td>#002</td>
-                        <td>FOLHAGEM ARTIFICIAL DE PLÁSTICO</td>
-                        <td>Artesanato</td>
-                        <td>R$500,00</td>
-                        <td> <span style="color:green;">R$ 0,25</span></td>
-                        <td> <span style="color:green;">125</span> </td>
-                        <td>08/01/2019</td>
-                        <td>Indefinido</td>
-                    </tr>
-                    <!--/.row-->
-
-                    <!--row-->
-                    <tr class="dark-row">
-                        <td>#001</td>
-                        <td>PULSEIRA FINA BRASIL COLORIDA 22 CM</td>
-                        <td>Acessório</td>
-                        <td>R$5.000,00</td>
-                        <td> <span style="color:green;">R$10,00</span></td>
-                        <td> <span style="color:red;">2</span></td>
-                        <td>12/06/2014</td>
-                        <td>Indefinido</td>
-                    </tr>
-
-
-                    <!--/.row-->
-
-
-
-                </tbody> <!-- ########### FIM TABELA DE PRODUTOS ########### -->
-
-
-
-            </table>
-
-            <!--FIM DO QUADRADO DO CADASTRAR PRODUTO (NÃO APAGAR)-->
-
-            </table>
-
-
-
-        </div>
-        <div class="modal-footer">
-            <div class="btn-group">
-
-                <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>
-                    Cadastrar</button>
-                <button class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>
-                    Sair</button>
-            </div>
-        </div>
-
-        </div><!-- /.modal-content -->
+            </div><!-- /.modal-content -->
         </div><!-- /.modal-dalog -->
         </div><!-- /.modal -->
 
@@ -403,15 +244,21 @@
         </div>
     </main>
     <!--Main layout-->
-
     <!--Footer-->
-    <footer class="page-footerRolagem text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+    <footer class="page-footerRoolagem text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
         <!--Copyright-->
         <div class="card-body text-center">
             <h4 class="text-white">
-                <p>&copy; Copyright Comercial Control 2019 </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &copy; Copyright Comercial Control 2019 </p>
             </h4>
-            <p class="h5 text-white"> for Ecommerce, marketplace, booking websites
+            <p class="h5 text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                for Ecommerce, marketplace, booking websites
                 and product landing pages</p> <br>
         </div>
         <!--/.Copyright-->

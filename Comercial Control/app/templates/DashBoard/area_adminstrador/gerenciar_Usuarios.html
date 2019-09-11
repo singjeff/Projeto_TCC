@@ -18,6 +18,7 @@
     <!-- Your custom styles (optional) -->
     <link href="../../../static/DashBoardCSS/area_adminstradorCSS/gerenciar_Usuarios.css" rel="stylesheet">
     <link href="../../../static/DashBoardCSS/dashBoardCSS.css" rel="stylesheet">
+
 </head>
 
 
@@ -52,7 +53,8 @@
         <div class="sidebar-fixed position-fixed">
 
             <a class="logo-wrapper waves-effect">
-                <img src="../../../static/Imagens/logo/LogoComercialControl2.png" class="img-fluid" alt="Comercial Control">
+                <img src="../../../static/Imagens/logo/LogoComercialControl2.png" class="img-fluid"
+                    alt="Comercial Control">
             </a>
 
             <div class="list-group list-group-flush">
@@ -90,22 +92,137 @@
                 <div>
 
                     <h1>
-                        Em Desenvolvimento...
+                        Bem vindo ao Gerenciamento de Usuario !
                     </h1>
 
 
                 </div>
 
             </div>
-            
-           
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
 
+            <!-- Heading -->
+            <div class="container">
+                <div class="row">
+                    <!--1 CARD -->
+                    <div class="col-lg-4">
+                        <div class="our-team-main">
+
+                            <!-- ############ INICIO 1° CARD (CADASTRAR USUARIO) ###########3-->
+                            <div id="cadastrarUsuario" class="modal fade in">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <a class="btn btn-default" data-dismiss="modal">Voltar<span
+                                                    class="glyphicon glyphicon-remove"></span></a>
+                                        </div>
+
+
+                                        <!--  INICIO CONTEUDO 1° CARD CADASTRAR USUARIO  -->
+
+
+                                        <div class="container">
+                                            <div class="row">
+
+
+
+                                                <div class="cardTituloModal">
+
+                                                    <h2 class="modal-title">Preencha os campos para realizar um
+                                                        cadastro
+                                                    </h2>
+
+                                                </div>
+
+
+
+                                                <div class="modal-body">
+
+
+                                                    <div class="cardModalConteudo">
+                                                        <h2 class="modal-title">Cadastre um novo Usuario</h2>
+
+
+
+                                                        <div class="form-group">
+
+                                                            <input type="email" name="Código da categoria" id="usuario_email"
+                                                                class="form-control-texto-CategoriaProduto input-lg"
+                                                                placeholder="Digite o e-mail " autofocus
+                                                                required>
+
+                                                            <input type="password" name="Nome da categoria" id="senha_email"
+                                                                class="form-control-texto-CategoriaProduto input-lg"
+                                                                placeholder="Senha" required>
+                                                                
+                                                        </div>
+
+                                                        <div class="radio">
+                                                            
+                                                            <div class="radio-primary">
+                                                                <input type="radio" name="radio" id="tipo_Usuario" checked />
+                                                                <label for="tipo_Usuario">Usuario</label>
+                                                            </div>
+
+                                                            <div class="radio-primary">
+                                                                <input type="radio" name="radio" id="tipo_adminstrador" checked />
+                                                                <label for="tipo_adminstrador">Adminstrador</label>
+                                                            </div>
+                                                       
+                                                       
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="modal-footer">
+                                            <div class="btn-group">
+                                                <button class="btn btn-danger" data-dismiss="modal"><span
+                                                        class="glyphicon glyphicon-remove"></span>
+                                                    Cancelar</button>
+                                                <button class="btn btn-primary"><span
+                                                        class="glyphicon glyphicon-check"></span>
+                                                    Salvar</button>
+                                            </div>
+                                        </div>
+
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dalog -->
+                            </div><!-- /.modal -->
+
+                            <a data-toggle="modal" href="#cadastrarUsuario" class="link">
+                                <!--############# FIM MODAL GERENCIAR PRODUTO ########  -->
+
+                                <!--####### CONFIGURAÇÕES DA SALA -->
+                                <div class="team-front">
+                                    <img src="../../../static/Imagens/icon/icone_de_cadastrar_usuario.png"
+                                        class="img-fluid" />
+                                    <h3>Cadastrar Usuario</h3>
+                                    <p>
+                                        <'Click para cadastrar um novo Usuario'>
+                                    </p>
+                                </div>
+
+                                <div class="team-back">
+                                    <span>
+                                        Consulte, altere, ou exclua dados de um produto !
+                                    </span>
+                                </div>
+                            </a> <!-- Link Fecha Aqui-->
+                        </div>
+                    </div>
+
+                    <!-- ############ FIM CONFIGURAÇÕES DA SALA ###########-->
+
+                    <!--Fim 2° CARD-->
+
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
         </div>
         <!--/.Card-->
 
@@ -118,13 +235,20 @@
     <!--Main layout-->
 
     <!--Footer-->
-    <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+    <footer class="page-footerRoolagem text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
         <!--Copyright-->
         <div class="card-body text-center">
             <h4 class="text-white">
-                <p>&copy; Copyright Comercial Control 2019 </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &copy; Copyright Comercial Control 2019 </p>
             </h4>
-            <p class="h5 text-white"> for Ecommerce, marketplace, booking websites
+            <p class="h5 text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                for Ecommerce, marketplace, booking websites
                 and product landing pages</p> <br>
         </div>
         <!--/.Copyright-->

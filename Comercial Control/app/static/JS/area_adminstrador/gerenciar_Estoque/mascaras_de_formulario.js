@@ -1,5 +1,5 @@
 
-/* MASCARA DE DINHEIRO */
+/* ################ MASCARA DE DINHEIRO ################# */
 
 String.prototype.reverse = function () {
     return this.split('').reverse().join('');
@@ -26,9 +26,11 @@ function mascaraMoeda(campo, evento) {
     campo.value = resultado.reverse();
 }
 
-/* FIM MASCARA DE DINHEIRO */
+/* ############### FIM MASCARA DE DINHEIRO ############## */
+
+
+/* ############## MASCARA DE CNPJ ###################### */
 
 
 
-
-
+/* ############## FIM MASCARA DE CNPJ ###################### */
