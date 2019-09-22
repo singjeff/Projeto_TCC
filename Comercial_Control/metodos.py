@@ -1,27 +1,29 @@
-from models import  Usuario,login
+from models import  Usuario
 
 SQL_DELETA_JOGO = 'delete from jogo where id = ?'
 SQL_JOGO_POR_ID = 'SELECT id, nome, categoria, console from jogo where id = ?'
-SQL_USUARIO_POR_ID = 'SELECT id_usuario, nome_usuario, senha from login where id_usuario = ?'
-SQL_ATUALIZA_JOGO = 'UPDATE jogo SET nome=?, categoria=?, console=? where id = ?'
+SQL_USUARIO_POR_ID = 'SELECT * from Usuario where cod_usuario = ?'
+SQL_ATUALIZA_USUARIO = 'UPDATE Usuario SET  tipo_usuario=?, senha_aplicacao=?  where cod_usuario = ?'
 SQL_BUSCA_JOGOS = 'SELECT id, nome, categoria, console from jogo'
-SQL_CRIA_JOGO = 'INSERT into jogo (nome, categoria, console) values (?, ?, ?)'
+SQL_CADASTRAR_USUARIO = 'insert into Usuario (cod_usuario, nome_usuario,tipo_usuario, senha_aplicacao) values (?, ?, ?, ?)'
 
 
 class cadas_att:
     def __init__(self, db):
         self.__db = db
 
-    def salvar(self, jogo):
+    def atualiza(self, usuario):
         cursor = self.__db
-
-        if (jogo.id):
-            cursor.execute(SQL_ATUALIZA_JOGO, (jogo.nome, jogo.categoria, jogo.console, jogo.id))
-        else:
-            cursor.execute(SQL_CRIA_JOGO, (jogo.nome, jogo.categoria, jogo.console))
-            jogo.id = cursor.execute('SELECT @@IDENTITY AS id;')
+        cursor.execute(SQL_ATUALIZA_USUARIO, (usuario.tipo_usuario,usuario.senha_aplicacao, usuario.cod_usuario))
         self.__db.connection.commit()
-        return jogo
+        return usuario
+    
+    def cadastrausuario(self, usuario):
+        cursor= self.__db
+        cursor.execute(SQL_CADASTRAR_USUARIO, (usuario.cod_usuario, usuario.nome_usuario,usuario.tipo_usuario, usuario.senha_aplicacao))
+        usuario.cod_usuario = cursor.execute('SELECT @@IDENTITY AS cod_usuario;')
+        self.__db.connection.commit()
+        return usuario
 
     def listar(self):
         cursor = self.__db.connection.cursor()
@@ -51,12 +53,12 @@ class UsuarioDao:
         usuario = traduz_login(dados) if dados else None
         return usuario
 
-
+'''
 def traduz_jogos(jogos):
     def cria_jogo_com_tupla(tupla):
         return Jogo(tupla[1], tupla[2], tupla[3], id=tupla[0])
     return list(map(cria_jogo_com_tupla, jogos))
-
+'''
 
 def traduz_login(tupla):
-    return login(tupla[0], tupla[1], tupla[2])
+    return Usuario(tupla[0],tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[6],tupla[7],tupla[8],tupla[9],tupla[10],tupla[11])

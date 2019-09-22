@@ -11,3 +11,23 @@
 }
 
 /* ######## FIM CONFIGURAÇÃO DO MENU LATERAL (TAMANHO DAS LETRAS)  ############ */
+
+/* Confiugurações do footer DASHBOARD P/ CONTEUDOS QUE NÃO CRIAM BARRA DE ROLAGEM */
+
+footer.page-footer {
+    bottom: 0;
+    color: #fff;
+    position: absolute !important;
+    width: 100% !important;
+   
+}
+
+/* Confiugurações do footer DASHBOARD (para coteudos que criam barra de rolagem) (Evitando footer sobreposto) */
+
+footer.page-footerRolagem {
+    bottom: 0;
+    color: #fff;
+    width: 100% !important;
+    margin-top: 10px !important;
+    text-align: center;
+}

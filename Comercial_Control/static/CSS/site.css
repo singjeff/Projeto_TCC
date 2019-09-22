@@ -4,17 +4,18 @@
   height: auto;
 }
 
-/* Confiugurações do footer */
+/* Confiugurações do footer LOGIN */
 
 footer{
 
   float: left;
-  background-color: #6c757d!important;
+  background-color: #6c757d !important;
   border-top: 5px solid #333;
   bottom: 0;
   left: 0;
   width: 100%;
 }
+
 
 
 /* Bootstrap */

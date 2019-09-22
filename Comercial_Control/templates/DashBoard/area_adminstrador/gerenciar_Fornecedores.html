@@ -17,7 +17,12 @@
     <link href="../../../static/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="../../../static/DashBoardCSS/area_adminstradorCSS/gerenciar_Fornecedores.css" rel="stylesheet">
+    <!-- CSS Da Dashboard-->
     <link href="../../../static/DashBoardCSS/dashBoardCSS.css" rel="stylesheet">
+    <!-- CSS do conteudo Central 
+    <link href="../../../static/DashBoardCSS/area_adminstradorCSS/gerenciar_Estoque.css" rel="stylesheet">
+    -->
+    <link href="../../../static/DashBoardCSS/area_adminstradorCSS/gerenciar_Fornecedores.css" rel="stylesheet">
 </head>
 
 <body class="grey lighten-3">
@@ -51,7 +56,8 @@
         <div class="sidebar-fixed position-fixed">
 
             <a class="logo-wrapper waves-effect">
-                <img src="../../../static/Imagens/logo/LogoComercialControl2.png" class="img-fluid" alt="Comercial Control">
+                <img src="../../../static/Imagens/logo/LogoComercialControl2.png" class="img-fluid"
+                    alt="Comercial Control">
             </a>
 
             <div class="list-group list-group-flush">
@@ -82,38 +88,177 @@
         <div class="container-fluid mt-5">
 
             <!-- Heading -->
-            <div class="card mb-4 wow fadeIn">
+            <div class="card mb-4">
 
                 <!--Card content-->
                 <div class="cardTitulo">
 
-
-                    <h2>
-                        Em Desenvolvimento...
-                    </h2>
+                    <div class="cardTituloModal">
 
 
+                        <h2 class="modal-title">Preencha os campos para realizar um cadastro ou <br>Digite o CNPJ para
+                            consulta
+                        </h2>
+
+                    </div>
                 </div>
 
-            </div>
-            <!-- Heading -->
+                <div class="modal-body">
 
-            <br><br><br><br><br><br><br><br><br><br>
 
-            
+                    <table class="table table-striped custab">
+
+
+                        <form role="form">
+
+
+
+                            <div class="section-title">
+                                <span class="tag tag-colored">
+                                    <h2>Dados Do Fornecedor &nbsp </h2>
+                                </span>
+                            </div>
+
+
+
+                            <div class="cardTituloModal">
+                                <div class="form-group">
+
+                                    <input type="number" name="senha" id="display_name"
+                                        class="form-control-CNPJ input-lg" placeholder="CNPJ" required autofocus>
+
+                                    <input type="text" name="Nome do Fornecedor" id="display_name"
+                                        class="form-control-texto input-lg" placeholder="Razão Social " required>
+                                </div>
+                            </div>
+                            <hr class="colorgraph">
+                            </hr> <!-- Linha colorida Divisória-->
+
+                            <div class="section-title">
+                                <span class="tag tag-colored">
+                                    <h2>Dados de endereço</h2>
+                                </span>
+
+                            </div>
+
+                            <div class="cardTituloModal">
+                                <div class="form-group">
+
+
+                                    <input type="number" class="form-control-Cod input-lg" name="Código do produto"
+                                        placeholder="CEP">
+
+                                    <input type="text" name="display_name" id="display_name"
+                                        class="form-control-texto input-lg" placeholder="Endereço" required>
+
+                                    <input type="text" name="display_name" id="display_name"
+                                        class="form-control-texto input-lg" placeholder="Nº de endereço" required>
+                                    <br>
+                                    <input type="text" class="form-control-QTDProduto input-lg" name="display_quant"
+                                        placeholder="Complemento">
+
+                                    <input type="text" class="form-control-QTDProduto input-lg" name="display_quant"
+                                        placeholder="Cidade">
+
+                                    <div class="form-Select-UF">
+                                        <label for="sel1" style="color: aliceblue">UF: &nbsp</label><br>
+                                        <select class="form-list-UF" id="UF" name="UF">
+                                            <option value="">Selecione</option>
+                                            <option value="AC">AC</option>
+                                            <option value="AL">AL</option>
+                                            <option value="AP">AP</option>
+                                            <option value="AM">AM</option>
+                                            <option value="BA">BA</option>
+                                            <option value="CE">CE</option>
+                                            <option value="DF">DF</option>
+                                            <option value="ES">ES</option>
+                                            <option value="GO">GO</option>
+                                            <option value="MA">MA</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MT">MT</option>
+                                            <option value="MG">MG</option>
+                                            <option value="PA">PA</option>
+                                            <option value="PB">PB</option>
+                                            <option value="PR">PR</option>
+                                            <option value="PE">PE</option>
+                                            <option value="PI">PI</option>
+                                            <option value="RJ">RJ</option>
+                                            <option value="RN">RN</option>
+                                            <option value="RS">RS</option>
+                                            <option value="RO">RO</option>
+                                            <option value="RR">RR</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SP">SP</option>
+                                            <option value="SE">SE</option>
+                                            <option value="TO">TO</option>
+                                        </select>
+                                    </div>
+
+                                    <input type="text" class="form-control-QTDProduto input-lg" name="display_quant"
+                                        placeholder="Nome pessoa para contato">
+
+                                    <input type="text" class="form-control-QTDProduto input-lg" name="display_quant"
+                                        placeholder="Email">
+
+                                    <input type="number" class="form-control-QTDProduto input-lg" name="Numero Telefone"
+                                        placeholder="Telefone">
+                                    <input type="number" class="form-control-QTDProduto input-lg" name="Numero Celular"
+                                        placeholder="Celular">
+
+                                </div>
+                            </div>
+                            </thead>
+                        </form>
+                    </table>
+
+                    <!--FIM CARD CADASTRAR PRODUTO-->
+
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="btn-group">
+
+                        <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>
+                            Cadastrar</button>
+                        <button class="btn btn-danger" data-dismiss="modal"><span
+                                class="glyphicon glyphicon-remove"></span>
+                            Sair</button>
+                    </div>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+        </div><!-- /.modal -->
+
+
+        </div>
+
+        </div>
+        <!-- Heading -->
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+
 
         </div>
     </main>
     <!--Main layout-->
-
     <!--Footer-->
-    <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+    <footer class="page-footerRoolagem text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
         <!--Copyright-->
         <div class="card-body text-center">
             <h4 class="text-white">
-                <p>&copy; Copyright Comercial Control 2019 </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &copy; Copyright Comercial Control 2019 </p>
             </h4>
-            <p class="h5 text-white"> for Ecommerce, marketplace, booking websites
+            <p class="h5 text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                for Ecommerce, marketplace, booking websites
                 and product landing pages</p> <br>
         </div>
         <!--/.Copyright-->
