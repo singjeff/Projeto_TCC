@@ -195,13 +195,19 @@
                                                             <input type="text" name="display_name" id="display_name"
                                                                 class="form-control-texto input-lg"
                                                                 onKeyUp="mascaraMoeda(this, event)" value=""
-                                                                placeholder="Digite o valor do produto " required>
+                                                                placeholder="Valor Nota fiscal " required>
 
                                                             <br>
                                                             <input type="number"
                                                                 class="form-control-QTDProduto input-lg"
                                                                 name="display_quant" placeholder="Quatidade do produto"
                                                                 min="1">
+                                                            
+
+                                                                <input type="text" name="display_name" id="display_name"
+                                                                class="form-control-QTDProduto input-lg"
+                                                                onKeyUp="mascaraMoeda(this, event)" value=""
+                                                                placeholder="Digite o valor do produto " required>
 
                                                             <br><br>
                                                             <div class="form-Select-MarcaProduto">
@@ -256,7 +262,7 @@
                                                         </div>
 
                                                         <div class="col-12">
-                                                            <textarea class="form-control"
+                                                            <textarea class="form-control-textArea"
                                                                 placeholder="Descrição do produto" rows="2"></textarea>
 
                                                         </div>
@@ -659,7 +665,7 @@
 
                         <div class="team-back">
                             <span>
-                                Cadaster uma Categoria !
+                                Cadastrar uma Categoria !
                             </span>
                         </div>
 
@@ -743,7 +749,7 @@
 
                         <div class="team-back">
                             <span>
-                                Cadaster uma Marca!
+                                Cadastrar uma Marca!
                             </span>
                         </div>
 
@@ -803,11 +809,9 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="../../../static/JS/mdb.min.js"></script>
     <!--Mascaras de formulario-->
-    <script type="text/javascript"
-        src="../../../static/JS/area_adminstrador/gerenciar_Estoque/mascaras_de_formulario.js"></script>
+    <script type="text/javascript" src="../../../static/JS/area_adminstrador/gerenciar_Estoque/mascaras_de_formulario.js"></script>
     <!---Filtro da tabela (gerenciar produto) -->
-    <script type="text/javascript" src="../../../static/JS/area_adminstrador/gerenciar_Estoque/tabela_com_filtro.js">
-    </script>
+    <script type="text/javascript" src="../../../static/JS/area_adminstrador/gerenciar_Estoque/tabela_com_filtro.js"></script>
     <!-- Criação de tabela dinâmica -->
     <script type="text/javascript"
         src="../../../static/JS/area_adminstrador/gerenciar_Estoque/criacao_tabela_dinamica.js"></script>

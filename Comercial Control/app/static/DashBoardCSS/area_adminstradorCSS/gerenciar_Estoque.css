@@ -312,6 +312,22 @@ h1{
 
 /* ################################## CONFIGURAÇÃO DOS CAMPOS DO FORMULARIO DE PRODUTO ############################ */
 
+.form-control-textArea{  /* Configuração da textArea (Fazer de um jeito melhor) */
+
+    
+    width: 103.5%;
+    height: calc(2.25rem + 27px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-left: -15px;
+
+}
 
 .form-control-texto {
 
@@ -415,7 +431,8 @@ h1{
 .form-control-QTDProduto {
 
     width: 37%;
-    display: flex;
+    display:inline-table;
+    float: left;
     height: calc(2.25rem + 2px);
     padding: .375rem .75rem;
     font-size: 1rem;
