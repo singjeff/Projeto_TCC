@@ -8,7 +8,7 @@
     <title>Comercial Control</title>
     <link rel="shortcut icon" href="../../../static/Imagens/logo/LogoComercialControl2.png" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
         integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -18,6 +18,7 @@
     <!-- Your custom styles (optional) -->
     <link href="../../../static/DashBoardCSS/area_adminstradorCSS/gerenciar_Usuarios.css" rel="stylesheet">
     <link href="../../../static/DashBoardCSS/dashBoardCSS.css" rel="stylesheet">
+
 </head>
 
 
@@ -137,44 +138,131 @@
 
                                                 <div class="modal-body">
 
+                                                    <!--###### DADOS PESSOAIS DE USUARIO ##### -->
 
                                                     <div class="cardModalConteudo">
-                                                        <h2 class="modal-title">Cadastre um novo Usuario</h2>
-
-
+                                                        <h2 class="modal-title">Dados do Usuario</h2>
 
                                                         <div class="form-group">
-                                                            
-                                                            <input type="text" name="nome" id="usuario_email"
-                                                                class="form-control-texto-CategoriaProduto input-lg"
-                                                                placeholder="Nome de Usuario " autofocus
-                                                                required>
 
-                                                            <input type="password" name="senha" id="senha_email"
-                                                                class="form-control-texto-CategoriaProduto input-lg"
+                                                            <input type="text" name="nome_usuario" id="nome_usuario"
+                                                                class="form-control-dadosUsuario input-lg"
+                                                                placeholder="Nome Completo " autofocus required>
+
+                                                            <input type="number"
+                                                                class="form-control-dadosUsuario  input-lg"
+                                                                name="cep" id="cep" placeholder="CEP">
+
+                                                            <input type="text"
+                                                                class="form-control-dadosUsuario input-lg"
+                                                                name="cidade" id="cidade" placeholder="Cidade">
+
+                                                            <div class="form-Select-UF">
+                                                                <label for="" style="color: aliceblue">UF:
+                                                                    &nbsp</label><br>
+                                                                <select class="form-list-UF" id="UF" name="uf">
+                                                                    <option value="">Selecione</option>
+                                                                    <option value="AC">AC</option>
+                                                                    <option value="AL">AL</option>
+                                                                    <option value="AP">AP</option>
+                                                                    <option value="AM">AM</option>
+                                                                    <option value="BA">BA</option>
+                                                                    <option value="CE">CE</option>
+                                                                    <option value="DF">DF</option>
+                                                                    <option value="ES">ES</option>
+                                                                    <option value="GO">GO</option>
+                                                                    <option value="MA">MA</option>
+                                                                    <option value="MS">MS</option>
+                                                                    <option value="MT">MT</option>
+                                                                    <option value="MG">MG</option>
+                                                                    <option value="PA">PA</option>
+                                                                    <option value="PB">PB</option>
+                                                                    <option value="PR">PR</option>
+                                                                    <option value="PE">PE</option>
+                                                                    <option value="PI">PI</option>
+                                                                    <option value="RJ">RJ</option>
+                                                                    <option value="RN">RN</option>
+                                                                    <option value="RS">RS</option>
+                                                                    <option value="RO">RO</option>
+                                                                    <option value="RR">RR</option>
+                                                                    <option value="SC">SC</option>
+                                                                    <option value="SP">SP</option>
+                                                                    <option value="SE">SE</option>
+                                                                    <option value="TO">TO</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <input type="text" name="endereco" id="endereco"
+                                                                class="form-control-dadosUsuario input-lg"
+                                                                placeholder="Endereço" required>
+
+                                                            <input type="text" name="numero_endereco" id="numero_endereco"
+                                                                class="form-control-dadosUsuario input-lg"
+                                                                placeholder="N° de Endereço" required>,
+
+                                                            <input type="tel" name="telefone" id="telefone"
+                                                                class="form-control-dadosUsuario input-lg"
+                                                                placeholder="Telefone" required>
+
+                                                            <input type="tel" name="celular" id="celular"
+                                                                class="form-control-dadosUsuario input-lg"
+                                                                placeholder="Celular" required>
+
+                                                            <div class="form-Select-Cargo">
+                                                                <label for="" style="color: aliceblue">Cargo:&nbsp</label><br>
+                                                                <select class="form-list-Cargo" id="cargo" name="cargo">
+                                                                    <option value="">Selecione</option>
+                                                                    <option value="cargo_Caixa">Caixa</option>
+                                                                    <option value="cargo_Estoquista">Estoquista</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <!--###### FIM DADOS PESSOAIS DE USUARIO ##### -->
+
+                                                    <!--###### DADOS DE LOGIN DO USUARIO ##### -->
+
+                                                    <div class="cardModalConteudo">
+
+                                                        <h2 class="modal-title">Dados de login do usuario</h2>
+                                                        <div class="form-group">
+
+                                                            <input type="email" name="login_usuario" id="email_Usuario"
+                                                                class="form-control-loginUsuario input-lg"
+                                                                placeholder="Digite o e-mail " required>
+
+                                                            <input type="password" name="senha_usuario"
+                                                                id="senha_Usuario"
+                                                                class="form-control-loginUsuario input-lg"
                                                                 placeholder="Senha" required>
-                                                                
                                                         </div>
 
-                                                        <div class="radio">
-                                                            
-                                                            <div class="radio-primary">
-                                                                <input type="radio" name="radio" id="tipo_Usuario" checked />
-                                                                <label for="tipo_Usuario">Usuario</label>
-                                                            </div>
+                                                        <!-- <div id="cardTipoUsuario"> -->
+                                                            <div class="radio">
 
-                                                            <div class="radio-primary">
-                                                                <input type="radio" name="radio" id="tipo_adminstrador" checked />
-                                                                <label for="tipo_adminstrador">Administrador</label>
+                                                                <div class="radio-primary">
+                                                                    <input type="radio" name="radio" value="1" id="tipo_Usuario"
+                                                                        checked />
+                                                                    <label for="tipo_Usuario">Funcionario</label>
+                                                                </div>
+
+                                                                <div class="radio-primary">
+                                                                    <input type="radio" name="radio" value="2" id="tipo_adminstrador"
+                                                                        checked />
+                                                                    <label for="tipo_adminstrador">Adminstrador</label>
+                                                                </div>
                                                             </div>
-                                                       
-                                                       
-                                                        </div>
+                                                        <!-- </div> --> 
+
+
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
 
                                         <div class="modal-footer">
                                             <div class="btn-group">
@@ -183,7 +271,7 @@
                                                     Cancelar</button>
                                                 <button class="btn btn-primary"><span
                                                         class="glyphicon glyphicon-check"></span>
-                                                    Salvar</button> 
+                                                    Salvar</button>
                                             </div>
                                         </div>
 
@@ -192,9 +280,9 @@
                             </div><!-- /.modal -->
 
                             <a data-toggle="modal" href="#cadastrarUsuario" class="link">
-                                <!--############# FIM MODAL GERENCIAR PRODUTO ########  -->
+                                <!--############# FIM MODAL CADASTRAR USUARIO ########  -->
 
-                                <!--####### CONFIGURAÇÕES DA SALA -->
+                                <!--####### CONFIGURAÇÕES DO CARD -->
                                 <div class="team-front">
                                     <img src="../../../static/Imagens/icon/icone_de_cadastrar_usuario.png"
                                         class="img-fluid" />
@@ -206,16 +294,16 @@
 
                                 <div class="team-back">
                                     <span>
-                                        Consulte, altere, ou exclua dados de um produto !
+                                        Cadastre um novo usuario no sistema!
                                     </span>
                                 </div>
                             </a> <!-- Link Fecha Aqui-->
                         </div>
                     </div>
 
-                    <!-- ############ FIM CONFIGURAÇÕES DA SALA ###########-->
+                    <!-- ############ FIM CONFIGURAÇÕES DO CARD ###########-->
 
-                    <!--Fim 2° CARD-->
+                    <!--Fim 1° CARD-->
 
                 </div>
             </div>
@@ -265,7 +353,8 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="../../../static/JS/mdb.min.js"></script>
     <!--Mascaras de formulario-->
-    <script type="text/javascript" src="../../../static/JS/area_aluno/gerenciar_produto/gerenciar_produto.js"></script>
+    <script type="text/javascript"
+        src="../../../static/JS/area_adminstrador/gerenciar_Estoque/mascaras_de_formulario.js"></script>
 
 
     <!-- Initializations -->

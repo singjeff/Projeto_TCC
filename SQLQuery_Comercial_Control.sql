@@ -1,34 +1,31 @@
+
 Create Table Usuario(
         cod_usuario VARCHAR(30) ,
         nome_usuario VARCHAR(40) ,
 		email_usuario VARCHAR(40),
-        dt_cadastro date ,
-        dt_bloqueio date ,
-        dt_ultimo_acesso date ,
+        dt_cadastro DATETIME ,
+        dt_bloqueio DATETIME ,
+        dt_ultimo_acesso DATETIME ,
         motivo_bloqueio VARCHAR(100),
         qtde_senha_errada smallint,
-        dt_ultima_troca date,
+        dt_ultima_troca DATETIME,
         ind_bloqueado VARCHAR(1),
         senha_aplicacao VARCHAR(500),
         constraint pkcod_usuario primary key (cod_usuario)
     )
 
-use Comercial_Controll
-
-
-DROP TABLE Usuario
 
 
 Create table Tipo_Pessoa(
-        id_tipo_pessoa VARCHAR(1),
-        descricao VARCHAR(20),
+        id_tipo_pessoa CHAR(1),
+        descricao VARCHAR(16),
         constraint pkTipoPessoa primary key (id_tipo_pessoa)
     )
 
 
 Create Table Pessoa(
         id_pessoa smallint,
-        id_tipo_pessoa VARCHAR(1),
+        id_tipo_pessoa CHAR(1),
         nome VARCHAR(130),
         incricao  smallint,
         data_cadastro date,
@@ -40,36 +37,36 @@ Create Table Pessoa(
     )
 
 Create table Funcionario(
-        id_funcionario smallint,
-        id_pessoa smallint,
+        id_funcionario smallint identity (1,1),
+        id_pessoa smallint ,
         cargo VARCHAR(20),
         constraint pkpessoa primary key (id_funcionario),
         constraint fkid_pessoa foreign key (id_pessoa) references Pessoa(id_pessoa)
     )
 
 Create table Fornecedor(
-        id_fornecedor smallint,
-        id_pessoa smallint,
+        id_fornecedor smallint identity (1,1) not null ,
+        id_pessoa smallint ,
         constraint pkfornecedor primary key (id_fornecedor),
         constraint fkidpessoa foreign key (id_pessoa) references Pessoa(id_pessoa)
     )
 
 Create table Endereco_Pessoa(
-        id_endereco_pessoa smallint,
-        id_pessoa smallint,
+        id_endereco_pessoa smallint identity (1,1) not null ,
+        id_pessoa smallint ,
         endereco VARCHAR(90),
         complemento VARCHAR(65),
         cidade VARCHAR(60),
         uf VARCHAR(2),
-        cep smallint,
+        cep bigint,
 
         constraint pkendereco primary key (id_endereco_pessoa),
         constraint fkpessoa foreign key (id_pessoa) references Pessoa(id_pessoa)
     )
 
 Create table Contato_Pessoa(
-        id_contato_pessoa smallint,
-        id_pessoa smallint,
+        id_contato_pessoa smallint identity (1,1) not null ,
+        id_pessoa smallint ,
         ddd smallint,
         celular smallint,
         telefone smallint,
@@ -80,8 +77,8 @@ Create table Contato_Pessoa(
     )
 
 Create table Cliente(
-        id_cliente smallint,
-        id_pessoa smallint,
+        id_cliente smallint identity (1,1) not null,
+        id_pessoa smallint ,
         data_nascimento date,
         constraint pkid_cliente primary key (id_cliente),
         constraint fk_pessoa foreign key (id_pessoa) references Pessoa(id_pessoa)

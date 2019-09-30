@@ -2,8 +2,8 @@
 
 from flask import Flask, render_template, request, redirect, session, flash, url_for, send_from_directory
 import pyodbc
-from metodos import cadas_att, UsuarioDao
-from models import Usuario
+from metodos import metodo_login, metodo_criar_usuario, metodo_att_usuario
+from models import Usuario,Pessoa,Endereco_Pessoa,ContatoPessoa
 
 app = Flask(__name__)
 app.secret_key = 'alura'
@@ -14,12 +14,13 @@ app.secret_key = 'alura'
 
 parametro=pyodbc.connect('Driver={SQL Server};'
                       'Server=DESKTOP-6181A8Q\SQLEXPRESS;'
-                      'Database=Comercial_Controll;'
+                      'Database=Comercial_Control;'
                       'Trusted_Connection=yes;')
     
 db = parametro.cursor()
-input_att = cadas_att(db)
-login_usu = UsuarioDao(db)
+cadastrar_usu = metodo_criar_usuario.cadastrar_usuario(db)
+atualiza_usuario = metodo_att_usuario.atualiza_usuario(db)
+login_usu = metodo_login.UsuarioDao(db)
 
 
 #################################### ^^^^^^^^^^^^^^^^^^ ####################################
@@ -70,16 +71,17 @@ def autenticar():
     usuario = login_usu.buscar_por_id(request.form['usuario'])
     if usuario:
         if usuario.senha_aplicacao == request.form['senha']:
-            session['usuario_logado'] = usuario.cod_usuario
-            flash('Funcionário(a)  ' + usuario.nome_usuario + ' logado!')
-            proxima_pagina = request.form['proxima']
-            return redirect(proxima_pagina)
+                session['usuario_logado'] = usuario.cod_usuario
+                flash('Funcionário(a)  ' + usuario.nome_usuario + ' logado!')
+                proxima_pagina = url_for('gerenciar_Estoque')
+                return redirect(proxima_pagina)
         else:
             flash('Senha invalida, tente denovo!')
             return redirect(url_for('login'))
     else:
         flash('Usuario não encontrado!')
         return redirect(url_for('login'))
+
 
 
 @app.route('/logout')
@@ -90,28 +92,59 @@ def logout():
 
 
 @app.route('/cadastrar_usuario',methods=['POST',])
-def cadastrar_usuario():
-    cod_usuario = request.form['nome']
-    senha_aplicacao = request.form['senha']
-    nome_usuario='teste'
-    email_usuario = 'teste@gmail.com'
+def cadastrar_usuario():  
+    cod_usuario = request.form['login_usuario']
+    senha_aplicacao = request.form['senha_usuario']
+    nome_usuario = request.form['nome_usuario']
+    email_usuario = request.form['login_usuario']
     dt_cadastro = None
     dt_bloqueio = None
     motivo_bloqueio = None
     dt_ultimo_acesso = None
     qtde_senha_errada = None
-    tipo_usuario = request.form['radio']
-    dt_ultima_troca_senha= None
-    dt_ultimo_acesso = None
+    dt_ultima_troca_senha = None
     ind_bloqueado = None
-    usuario = login_usu.buscar_por_id(request.form['nome'])
+    usuario = login_usu.buscar_por_id(request.form['login_usuario'])
     att_usuario = Usuario(cod_usuario,nome_usuario,email_usuario,dt_cadastro,dt_bloqueio,motivo_bloqueio,\
-        dt_ultimo_acesso,qtde_senha_errada,dt_ultima_troca_senha,ind_bloqueado,tipo_usuario,senha_aplicacao)
+        dt_ultimo_acesso,qtde_senha_errada,dt_ultima_troca_senha,ind_bloqueado, senha_aplicacao)
+    
+    id_pessoa = request.form['numero_endereco']
+    id_tipo_pessoa = request.form['radio']
+    nome = request.form['nome_usuario']
+    inscricao = None
+    data_cadastro = None
+    ind_cliente = None
+    ind_funcionario = None
+    ind_fornecedor = None
+    att_pessoa= Pessoa(id_pessoa, id_tipo_pessoa, nome, inscricao, data_cadastro, ind_cliente, ind_funcionario,ind_fornecedor)
+    
+    id_pessoa = request.form['numero_endereco']
+    cep = request.form['cep']
+    cidade = request.form['cidade']
+    uf = request.form['uf']
+    endereco = request.form['endereco']
+    complemento = request.form['numero_endereco']
+    att_endereco = Endereco_Pessoa(id_pessoa, endereco, complemento, cidade, uf, cep)
+
+    id_pessoa = request.form['numero_endereco']
+    ddd = None
+    celular = request.form['celular']
+    telefone = request.form['telefone']
+    email = request.form['login_usuario']
+    nome_contato = request.form['nome_usuario']
+    att_contato = ContatoPessoa(id_pessoa, ddd, celular, telefone, email, nome_contato)
+
+    
+
+
     if usuario:
         if usuario.cod_usuario == cod_usuario:
-            salvar_attusuario = input_att.atualiza(att_usuario)
+            salvar_attusuario = atualiza_usuario.atualiza(att_usuario)
     else:
-        salvar_cadastrausuario= input_att.cadastrausuario(att_usuario)
+        salvar_cadastrausuario= cadastrar_usu.cadastra_usuario(att_usuario,att_pessoa,att_endereco,att_contato)
+
+
+
     return redirect(url_for('gerenciar_Usuarios'))
 
 #################################### ^^^^^^^^^^^^^^^^^^ ####################################
