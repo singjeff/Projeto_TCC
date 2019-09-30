@@ -1,8 +1,9 @@
 
 class Usuario:
-    def __init__(self, cod_usuario, nome_usuario,email_usuario,  dt_cadastro, dt_bloqueio, dt_ultimo_acesso,\
+    def __init__(self, cod_usuario, id_tipopessoa,  nome_usuario,email_usuario,  dt_cadastro, dt_bloqueio, dt_ultimo_acesso,\
         motivo_bloqueio, qtde_senha_errada, dt_ultima_troca_senha, ind_bloqueado, senha_aplicacao):
         self.cod_usuario = cod_usuario
+        self.id_tipopessoa = id_tipopessoa
         self.nome_usuario = nome_usuario
         self.email_usuario = email_usuario
         self.dt_cadastro = dt_cadastro

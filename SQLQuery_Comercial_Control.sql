@@ -1,6 +1,14 @@
 
+Create table Tipo_Pessoa(
+        id_tipo_pessoa CHAR(1),
+        descricao VARCHAR(16),
+        constraint pkTipoPessoa primary key (id_tipo_pessoa)
+    )
+
+
 Create Table Usuario(
         cod_usuario VARCHAR(30) ,
+		id_tipopessoa CHAR(1),
         nome_usuario VARCHAR(40) ,
 		email_usuario VARCHAR(40),
         dt_cadastro DATETIME ,
@@ -11,16 +19,10 @@ Create Table Usuario(
         dt_ultima_troca DATETIME,
         ind_bloqueado VARCHAR(1),
         senha_aplicacao VARCHAR(500),
-        constraint pkcod_usuario primary key (cod_usuario)
+        constraint pkcod_usuario primary key (cod_usuario),
+		constraint fkidtipo foreign key (id_tipopessoa) references Tipo_Pessoa(id_tipo_pessoa)
     )
 
-
-
-Create table Tipo_Pessoa(
-        id_tipo_pessoa CHAR(1),
-        descricao VARCHAR(16),
-        constraint pkTipoPessoa primary key (id_tipo_pessoa)
-    )
 
 
 Create Table Pessoa(
@@ -33,7 +35,7 @@ Create Table Pessoa(
         ind_funcionario VARCHAR(1),
         ind_fornecedor VARCHAR(1),
         constraint pkid_pessoa primary key (id_pessoa),
-        constraint fkid_tipo foreign key (id_tipo_pessoa) references Tipo_Pessoa(id_tipo_pessoa)
+        constraint fkidtipopessoa foreign key (id_tipo_pessoa) references Tipo_Pessoa(id_tipo_pessoa)
     )
 
 Create table Funcionario(

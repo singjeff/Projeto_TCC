@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, request, redirect, session, flash, url_for, send_from_directory
 import pyodbc
+from datetime import date
 from metodos import metodo_login, metodo_criar_usuario, metodo_att_usuario
 from models import Usuario,Pessoa,Endereco_Pessoa,ContatoPessoa
 
@@ -21,7 +22,7 @@ db = parametro.cursor()
 cadastrar_usu = metodo_criar_usuario.cadastrar_usuario(db)
 atualiza_usuario = metodo_att_usuario.atualiza_usuario(db)
 login_usu = metodo_login.UsuarioDao(db)
-
+data_atual = date.today()
 
 #################################### ^^^^^^^^^^^^^^^^^^ ####################################
 
@@ -72,9 +73,14 @@ def autenticar():
     if usuario:
         if usuario.senha_aplicacao == request.form['senha']:
                 session['usuario_logado'] = usuario.cod_usuario
-                flash('Funcionário(a)  ' + usuario.nome_usuario + ' logado!')
-                proxima_pagina = url_for('gerenciar_Estoque')
-                return redirect(proxima_pagina)
+                if usuario.id_tipopessoa == '1':
+                    flash('Funcionário(a)  ' + usuario.nome_usuario + ' logado!')
+                    proxima_pagina = url_for('gerenciar_Usuarios')
+                    return redirect(proxima_pagina)
+                else:
+                    flash('Administrador(a)  ' + usuario.nome_usuario + ' logado!')
+                    proxima_pagina = url_for('gerenciar_Estoque')
+                    return redirect(proxima_pagina)
         else:
             flash('Senha invalida, tente denovo!')
             return redirect(url_for('login'))
@@ -95,9 +101,10 @@ def logout():
 def cadastrar_usuario():  
     cod_usuario = request.form['login_usuario']
     senha_aplicacao = request.form['senha_usuario']
+    id_tipopessoa = request.form['radio']
     nome_usuario = request.form['nome_usuario']
     email_usuario = request.form['login_usuario']
-    dt_cadastro = None
+    dt_cadastro = data_atual.strftime('%d/%m/%y')
     dt_bloqueio = None
     motivo_bloqueio = None
     dt_ultimo_acesso = None
@@ -105,7 +112,7 @@ def cadastrar_usuario():
     dt_ultima_troca_senha = None
     ind_bloqueado = None
     usuario = login_usu.buscar_por_id(request.form['login_usuario'])
-    att_usuario = Usuario(cod_usuario,nome_usuario,email_usuario,dt_cadastro,dt_bloqueio,motivo_bloqueio,\
+    att_usuario = Usuario(cod_usuario,id_tipopessoa,nome_usuario,email_usuario,dt_cadastro,dt_bloqueio,motivo_bloqueio,\
         dt_ultimo_acesso,qtde_senha_errada,dt_ultima_troca_senha,ind_bloqueado, senha_aplicacao)
     
     id_pessoa = request.form['numero_endereco']

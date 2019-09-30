@@ -56,4 +56,4 @@ def traduz_jogos(jogos):
 '''
 
 def traduz_login(tupla):
-    return Usuario(tupla[0],tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[6],tupla[7],tupla[8],tupla[9],tupla[10])
+    return Usuario(tupla[0],tupla[1],tupla[2],tupla[3],tupla[4],tupla[5],tupla[6],tupla[7],tupla[8],tupla[9],tupla[10], tupla[11])
