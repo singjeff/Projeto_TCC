@@ -3,8 +3,8 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for, send_from_directory
 import pyodbc
 from datetime import date
-from metodos import metodo_login, metodo_criar_usuario, metodo_att_usuario
-from models import Usuario,Pessoa,Endereco_Pessoa,ContatoPessoa
+from metodos import metodo_login, metodo_criar_usuario, metodo_att_usuario, metodo_criar_fornecedor
+from models import Usuario,Pessoa,Endereco_Pessoa,ContatoPessoa, Fornecedor
 
 app = Flask(__name__)
 app.secret_key = 'alura'
@@ -14,10 +14,9 @@ app.secret_key = 'alura'
 #################################### CONEXÃO SQL SERVER ####################################
 
 parametro=pyodbc.connect('Driver={SQL Server};'
-                      'Server=DESKTOP-6181A8Q\SQLEXPRESS;'
+                      'Server=DESKTOP-0KG5KKS\SQLEXPRESS;'
                       'Database=Comercial_Control;'
-                      'Trusted_Connection=yes;')
-    
+                      'Trusted_Connection=yes;')    
 db = parametro.cursor()
 cadastrar_usu = metodo_criar_usuario.cadastrar_usuario(db)
 atualiza_usuario = metodo_att_usuario.atualiza_usuario(db)
@@ -153,6 +152,40 @@ def cadastrar_usuario():
 
 
     return redirect(url_for('gerenciar_Usuarios'))
+
+
+
+@app.route('/cadastrar_fornecedor',methods=['POST',])
+def cadastrar_fornecedor():  
+    inscricao = request.form['cnpj']
+    ind_fornecedor = request.form['razaosocial']
+    att_pessoa= Pessoa(inscricao,ind_fornecedor)
+    
+    id_pessoa = request.form['numero_endereco']
+    cep = request.form['cep']
+    cidade = request.form['cidade']
+    uf = request.form['uf']
+    endereco = request.form['endereco']
+    complemento = request.form['numero_endereco']
+    att_endereco = Endereco_Pessoa(id_pessoa, endereco, complemento, cidade, uf, cep)
+
+    id_pessoa = request.form['numero_endereco']
+    ddd = None
+    celular = request.form['celular']
+    telefone = request.form['telefone']
+    email = request.form['login_usuario']
+    nome_contato = request.form['nome_usuario']
+    att_contato = ContatoPessoa(id_pessoa, ddd, celular, telefone, email, nome_contato)
+
+    if fornecedor:
+        if fornecedor.cod_fornecedor == cod_fornecedor:
+            salvar_attfornecedor = atualiza_fornecedor.atualiza(att_fornecedor)
+    else:
+        salvar_cadastrafornecedor= cadastrar_for.cadastra_fornecedor(att_fornecedor,att_pessoa,att_endereco,att_contato)
+
+
+
+    return redirect(url_for('gerenciar_fornecedor'))
 
 #################################### ^^^^^^^^^^^^^^^^^^ ####################################
 

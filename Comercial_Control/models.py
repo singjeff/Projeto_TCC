@@ -46,3 +46,8 @@ class ContatoPessoa:
         self.telefone = telefone
         self.email = email
         self.nome_contato = nome_contato
+
+class Fornecedor:
+    def __init__(self, id_fornecedor, id_pessoa):
+        self.id_fornecedor = id_fornecedor
+        self.id_pessoa = id_pessoa
