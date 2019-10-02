@@ -14,7 +14,7 @@ app.secret_key = 'alura'
 #################################### CONEXÃO SQL SERVER ####################################
 
 parametro=pyodbc.connect('Driver={SQL Server};'
-                      'Server=DESKTOP-6181A8Q\SQLEXPRESS;'
+                      'Server=DESKTOP-0KG5KKS\SQLEXPRESS;'
                       'Database=Comercial_Control;'
                       'Trusted_Connection=yes;')
     
@@ -56,6 +56,24 @@ def gerenciar_Fornecedores():
         return redirect(url_for('login', proxima=url_for('gerenciar_Fornededores')))
     return render_template('DashBoard/area_adminstrador/gerenciar_Fornecedores.html')
 
+
+@app.route('/calendario_geral')
+def calendario_geral():
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect(url_for('login', proxima=url_for('calendario_geral')))
+    return render_template('DashBoard/area_adminstrador/calendario_geral.html')
+
+@app.route('/relatorios')
+def relatorios():
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect(url_for('login', proxima=url_for('relatorios')))
+    return render_template('DashBoard/area_adminstrador/relatorios.html')
+
+@app.route('/contato')
+def contato():
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect(url_for('login', proxima=url_for('contato')))
+    return render_template('DashBoard/area_adminstrador/contato.html')
 
 
 

@@ -35,7 +35,7 @@
                 </a>
 
                 <!-- Botão Sair -->
-                <a class="btn ml-2 btn-warning" href="../../login.html">Sair</a></li>
+                <a class="btn ml-2 btn-warning" href="{{url_for('logout')}}">Sair</a></li>
 
                 <!-- Collapse -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -56,17 +56,17 @@
             </a>
 
             <div class="list-group list-group-flush">
-                <a href="gerenciar_Estoque.html" class="list-group-item list-group-item-action waves-effect">
+                <a href="{{url_for('gerenciar_Estoque')}}" class="list-group-item list-group-item-action  waves-effect">
                     <i class="fas fa-clipboard-check atividades_entregues icone"></i>Gerenciar Estoque</a>
-                <a href="gerenciar_Fornecedores.html" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fa fa-pie-chart mr-3"></i>Gerenciar Fornecedores </a>
-                <a href="gerenciar_Usuarios.html" class="list-group-item list-group-item-action waves-effect">
+                <a href="{{url_for('gerenciar_Fornecedores')}}" class="list-group-item list-group-item-action   waves-effect">
+                    <i class="fa fa-pie-chart mr-3"></i>Gerenciar Fornecedores</a>
+                <a href="{{url_for('gerenciar_Usuarios')}}" class="list-group-item list-group-item-action  waves-effect">
                     <i class="fa fa-user mr-3"></i>Gerenciar Usuarios</a>
-                <a href="calendario_geral.html" class="list-group-item list-group-item-action active waves-effect">
+                <a href="{{url_for ('calendario_geral')}}" class="list-group-item list-group-item-action active waves-effect">
                     <i class="fa fa-table mr-3"></i>Calendario </a>
-                <a href="relatorios.html" class="list-group-item list-group-item-action waves-effect">
+                <a href="{{url_for('relatorios')}}" class="list-group-item list-group-item-action  waves-effect">
                     <i class="fab fa-bitcoin icone"></i>Relatórios</a>
-                <a href="conta_aluno.html" class="list-group-item list-group-item-action waves-effect">
+                <a href="{{url_for('contato')}}" class="list-group-item list-group-item-action  waves-effect">
                     <i class="fa fa-user mr-3"></i>Contato</a>
             </div>
 
