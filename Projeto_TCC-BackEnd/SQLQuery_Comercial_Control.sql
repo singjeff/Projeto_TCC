@@ -9,11 +9,11 @@ INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('1', 'Funcionario')
 INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('2', 'Administrador')
 
 Create Table Usuario(
-        cod_usuario VARCHAR(30) ,
+        cod_usuario smallint identity(1,1) ,
 	id_tipopessoa CHAR(1),
         nome_usuario VARCHAR(40) ,
 	email_usuario VARCHAR(40),
-        dt_cadastro DATETIME ,
+        dt_cadastro DATE ,
         dt_bloqueio DATETIME ,
         dt_ultimo_acesso DATETIME ,
         motivo_bloqueio VARCHAR(100),
@@ -22,14 +22,13 @@ Create Table Usuario(
         ind_bloqueado VARCHAR(1),
         senha_aplicacao VARCHAR(500),
         constraint pkcod_usuario primary key (cod_usuario),
-	constraint fkidtipo foreign key (id_tipopessoa) references Tipo_Pessoa(id_tipo_pessoa)
+	constraint fkidtipo foreign key (id_tipopessoa) references Tipo_Pessoa(id_tipo_pessoa),
+	constraint uq_email_usuario  unique (email_usuario)
     )
-    
+
 INSERT INTO Usuario(id_tipopessoa,nome_usuario,email_usuario,dt_cadastro,dt_bloqueio,
 dt_ultimo_acesso, motivo_bloqueio,qtde_senha_errada, dt_ultima_troca,ind_bloqueado,senha_aplicacao)
 values('2','admin','admin@admin.com','','','','','','','','admin')
-
-
 
 
 Create Table Pessoa(
@@ -50,7 +49,8 @@ Create table Funcionario(
         id_pessoa smallint ,
         cargo VARCHAR(20),
         constraint pkpessoa primary key (id_funcionario),
-        constraint fkid_pessoa foreign key (id_pessoa) references Pessoa(id_pessoa)
+        constraint fkid_pessoa foreign key (id_pessoa) references Pessoa(id_pessoa),
+		constraint uq_id_pessoa  unique (id_pessoa)
     )
 
 Create table Fornecedor(
