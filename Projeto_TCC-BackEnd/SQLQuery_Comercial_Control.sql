@@ -24,6 +24,11 @@ Create Table Usuario(
         constraint pkcod_usuario primary key (cod_usuario),
 		constraint fkidtipo foreign key (id_tipopessoa) references Tipo_Pessoa(id_tipo_pessoa)
     )
+    
+INSERT INTO Usuario(id_tipopessoa,nome_usuario,email_usuario,dt_cadastro,dt_bloqueio,
+dt_ultimo_acesso, motivo_bloqueio,qtde_senha_errada, dt_ultima_troca,ind_bloqueado,senha_aplicacao)
+values('2','admin','admin@admin.com','','','','','','','','admin')
+
 
 
 
