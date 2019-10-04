@@ -1,0 +1,16 @@
+NAMES CADASTRAR PRODUTOS:
+####################
+
+CNPJ_do_Fornecedor
+Nome_do_Fornecedor
+DT_Nota_Fiscal
+####################
+
+Codigo_do_produto
+Nome_Produto
+Valor_Produto
+Qtde_Produto
+Marca_Produto
+Categoria_Produto
+Valor_Total
+Descricao_Produto
