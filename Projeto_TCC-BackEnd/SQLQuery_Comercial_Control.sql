@@ -10,9 +10,9 @@ INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('2', 'Administrador')
 
 Create Table Usuario(
         cod_usuario VARCHAR(30) ,
-		id_tipopessoa CHAR(1),
+	id_tipopessoa CHAR(1),
         nome_usuario VARCHAR(40) ,
-		email_usuario VARCHAR(40),
+	email_usuario VARCHAR(40),
         dt_cadastro DATETIME ,
         dt_bloqueio DATETIME ,
         dt_ultimo_acesso DATETIME ,
@@ -22,7 +22,7 @@ Create Table Usuario(
         ind_bloqueado VARCHAR(1),
         senha_aplicacao VARCHAR(500),
         constraint pkcod_usuario primary key (cod_usuario),
-		constraint fkidtipo foreign key (id_tipopessoa) references Tipo_Pessoa(id_tipo_pessoa)
+	constraint fkidtipo foreign key (id_tipopessoa) references Tipo_Pessoa(id_tipo_pessoa)
     )
     
 INSERT INTO Usuario(id_tipopessoa,nome_usuario,email_usuario,dt_cadastro,dt_bloqueio,
@@ -36,7 +36,7 @@ Create Table Pessoa(
         id_pessoa smallint,
         id_tipo_pessoa CHAR(1),
         nome VARCHAR(130),
-        incricao  smallint,
+        incricao  bigint,
         data_cadastro date,
         ind_cliente VARCHAR (1),
         ind_funcionario VARCHAR(1),
