@@ -67,7 +67,7 @@ Create table Endereco_Pessoa(
         complemento VARCHAR(65),
         cidade VARCHAR(60),
         uf VARCHAR(2),
-        cep bigint,
+        cep int,
 
         constraint pkendereco primary key (id_endereco_pessoa),
         constraint fkpessoa foreign key (id_pessoa) references Pessoa(id_pessoa)
@@ -77,8 +77,8 @@ Create table Contato_Pessoa(
         id_contato_pessoa smallint identity (1,1) not null ,
         id_pessoa smallint ,
         ddd smallint,
-        celular bigint,
-        telefone bigint,
+        celular VARCHAR(15),
+        telefone VARCHAR(14),
         email VARCHAR(200),
         nome_contato VARCHAR(50),
         constraint pkid_contato primary key (id_contato_pessoa),
