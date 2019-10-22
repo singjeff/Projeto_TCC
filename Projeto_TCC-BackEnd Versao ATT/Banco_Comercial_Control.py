@@ -96,6 +96,7 @@ Create table Cliente(
 Create table Categoria_Produto(
         id_categoria smallint,
         descricao VARCHAR(20),
+	marca varchar(50),
         constraint pkid_categoria primary key (id_categoria)
     )
 
