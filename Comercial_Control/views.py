@@ -14,7 +14,7 @@ app.secret_key = 'alura'
 #################################### CONEXÃO SQL SERVER ####################################
 
 parametro=pyodbc.connect('Driver={SQL Server};'
-                      'Server=DESKTOP-6181A8Q\SQLEXPRESS;'
+                      'Server=NOTE_CPV-EEE\SQLEXPRESS;'
                       'Database=Comercial_Control;'
                       'Trusted_Connection=yes;')
     

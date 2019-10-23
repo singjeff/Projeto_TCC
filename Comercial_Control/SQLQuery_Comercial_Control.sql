@@ -10,6 +10,7 @@ Create table Tipo_Pessoa(
 
 INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('1', 'Funcionario')
 INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('2', 'Administrador')
+INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('3', 'Fornecedor')
 
 Create Table Usuario(
         cod_usuario smallint identity(1,1) ,
@@ -35,7 +36,7 @@ Create Table Pessoa(
         id_pessoa smallint,
         id_tipo_pessoa CHAR(1),
         nome VARCHAR(130),
-        incricao  smallint,
+        inscricao  VARCHAR(30),
         data_cadastro date,
         ind_cliente VARCHAR (1),
         ind_funcionario VARCHAR(1),
@@ -77,8 +78,8 @@ Create table Contato_Pessoa(
         id_contato_pessoa smallint identity (1,1) not null ,
         id_pessoa smallint ,
         ddd smallint,
-        celular bigint,
-        telefone bigint,
+        celular VARCHAR(30),
+        telefone VARCHAR(30),
         email VARCHAR(200),
         nome_contato VARCHAR(50),
         constraint pkid_contato primary key (id_contato_pessoa),
