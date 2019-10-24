@@ -10,6 +10,7 @@ Create table Tipo_Pessoa(
 
 INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('1', 'Funcionario')
 INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('2', 'Administrador')
+INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('3', 'Fornecedor')
 
 Create Table Usuario(
         cod_usuario smallint identity(1,1) ,
@@ -96,7 +97,6 @@ Create table Cliente(
 Create table Categoria_Produto(
         id_categoria smallint,
         descricao VARCHAR(20),
-	marca varchar(50),
         constraint pkid_categoria primary key (id_categoria)
     )
 
@@ -104,6 +104,7 @@ Create table Produto(
         codigo_produto smallint,
         id_categoria smallint,
         descricao VARCHAR(100),
+	marca varchar(50),
         valor_venda float,
         constraint pkcodigo_produto primary key (codigo_produto),
         constraint fkid_categoria foreign key (id_categoria) references Categoria_Produto(id_categoria)
