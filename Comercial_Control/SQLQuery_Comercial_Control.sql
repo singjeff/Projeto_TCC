@@ -35,7 +35,7 @@ Create Table Pessoa(
         id_pessoa smallint,
         id_tipo_pessoa CHAR(1),
         nome VARCHAR(130),
-        incricao  smallint,
+        inscricao  smallint,
         data_cadastro date,
         ind_cliente VARCHAR (1),
         ind_funcionario VARCHAR(1),
