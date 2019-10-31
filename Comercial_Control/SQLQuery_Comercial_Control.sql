@@ -1,5 +1,6 @@
 drop database Comercial_Control
 create database Comercial_Control
+use Comercial_Control
 
 Create table Tipo_Pessoa(
         id_tipo_pessoa CHAR(1),
@@ -30,6 +31,7 @@ Create Table Usuario(
     )
 
 INSERT INTO Usuario(id_tipopessoa, nome_usuario, email_usuario, senha_aplicacao) VALUES ('2', 'ADM', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3')
+INSERT INTO Usuario(id_tipopessoa, nome_usuario, email_usuario, senha_aplicacao) VALUES ('1', 'USU', 'usuario@usuario.com', 'f8032d5cae3de20fcec887f395ec9a6a')
 
 Create Table Pessoa(
         id_pessoa smallint,
