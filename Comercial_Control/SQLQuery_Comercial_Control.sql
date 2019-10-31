@@ -1,7 +1,6 @@
 drop database Comercial_Control
 create database Comercial_Control
 
-
 Create table Tipo_Pessoa(
         id_tipo_pessoa CHAR(1),
         descricao VARCHAR(16),
@@ -10,12 +9,13 @@ Create table Tipo_Pessoa(
 
 INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('1', 'Funcionario')
 INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('2', 'Administrador')
+INSERT INTO Tipo_Pessoa(id_tipo_pessoa, descricao) values ('3', 'Fornecedor')
 
 Create Table Usuario(
         cod_usuario smallint identity(1,1) ,
-		id_tipopessoa CHAR(1),
+	id_tipopessoa CHAR(1),
         nome_usuario VARCHAR(40) ,
-		email_usuario VARCHAR(40),
+	email_usuario VARCHAR(40),
         dt_cadastro DATE ,
         dt_bloqueio DATETIME ,
         dt_ultimo_acesso DATETIME ,
@@ -25,17 +25,17 @@ Create Table Usuario(
         ind_bloqueado VARCHAR(1),
         senha_aplicacao VARCHAR(500),
         constraint pkcod_usuario primary key (cod_usuario),
-		constraint fkidtipo foreign key (id_tipopessoa) references Tipo_Pessoa(id_tipo_pessoa),
-		constraint uq_email_usuario  unique (email_usuario)
+	constraint fkidtipo foreign key (id_tipopessoa) references Tipo_Pessoa(id_tipo_pessoa),
+	constraint uq_email_usuario  unique (email_usuario)
     )
 
-INSERT INTO Usuario(id_tipopessoa, nome_usuario, email_usuario, senha_aplicacao) VALUES ('2', 'ADM', 'adm@admin.com', 'admin')
+INSERT INTO Usuario(id_tipopessoa, nome_usuario, email_usuario, senha_aplicacao) VALUES ('2', 'ADM', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3')
 
 Create Table Pessoa(
         id_pessoa smallint,
         id_tipo_pessoa CHAR(1),
         nome VARCHAR(130),
-        inscricao  smallint,
+        inscricao  VARCHAR(18),
         data_cadastro date,
         ind_cliente VARCHAR (1),
         ind_funcionario VARCHAR(1),
@@ -67,7 +67,7 @@ Create table Endereco_Pessoa(
         complemento VARCHAR(65),
         cidade VARCHAR(60),
         uf VARCHAR(2),
-        cep bigint,
+        cep int,
 
         constraint pkendereco primary key (id_endereco_pessoa),
         constraint fkpessoa foreign key (id_pessoa) references Pessoa(id_pessoa)
@@ -77,8 +77,8 @@ Create table Contato_Pessoa(
         id_contato_pessoa smallint identity (1,1) not null ,
         id_pessoa smallint ,
         ddd smallint,
-        celular bigint,
-        telefone bigint,
+        celular VARCHAR(15),
+        telefone VARCHAR(14),
         email VARCHAR(200),
         nome_contato VARCHAR(50),
         constraint pkid_contato primary key (id_contato_pessoa),
@@ -103,6 +103,7 @@ Create table Produto(
         codigo_produto smallint,
         id_categoria smallint,
         descricao VARCHAR(100),
+        marca varchar(50),
         valor_venda float,
         constraint pkcodigo_produto primary key (codigo_produto),
         constraint fkid_categoria foreign key (id_categoria) references Categoria_Produto(id_categoria)
