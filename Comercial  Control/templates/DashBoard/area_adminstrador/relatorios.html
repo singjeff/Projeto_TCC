@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Comercial Control</title>
+    <link rel="shortcut icon" href="../../../static/Imagens/logo/LogoComercialControl2.png" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../../static/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../../static/DashBoardCSS/area_adminstradorCSS/relatorio.css" rel="stylesheet">
+    <link href="../../../static/DashBoardCSS/dashBoardCSS.css" rel="stylesheet">
+</head>
+
+<body class="grey lighten-3">
+
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container-fluid">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="#">
+                    <strong class="blue-text">Relatórios </strong>
+                </a>
+
+                <!-- Botão Sair -->
+                <a class="btn ml-2 btn-warning" href="{{url_for('logout')}}">Sair</a></li>
+
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+        <!-- Sidebar -->
+        <div class="sidebar-fixed position-fixed">
+
+            <a class="logo-wrapper waves-effect">
+                <img src="../../../static/Imagens/logo/LogoComercialControl2.png" class="img-fluid"
+                    alt="Comercial Control">
+            </a>
+
+            <div class="list-group list-group-flush">
+                <a href="{{url_for('gerenciar_Estoque')}}" class="list-group-item list-group-item-action  waves-effect">
+                    <i class="fas fa-clipboard-check atividades_entregues icone"></i>Gerenciar Estoque</a>
+                <a href="{{url_for('gerenciar_Fornecedores')}}" class="list-group-item list-group-item-action  waves-effect">
+                    <i class="fa fa-pie-chart mr-3"></i>Gerenciar Fornecedores</a>
+                <a href="{{url_for('gerenciar_Usuarios')}}" class="list-group-item list-group-item-action  waves-effect">
+                    <i class="fa fa-user mr-3"></i>Gerenciar Usuarios</a>
+                <a href="{{url_for ('calendario_geral')}}" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-table mr-3"></i>Calendario </a>
+                <a href="{{url_for('relatorios')}}" class="list-group-item list-group-item-action active waves-effect">
+                    <i class="fab fa-bitcoin icone"></i>Relatórios</a>
+                <a href="{{url_for('contato')}}" class="list-group-item list-group-item-action  waves-effect">
+                    <i class="fa fa-user mr-3"></i>Contato</a>
+            </div>
+
+        </div>
+
+
+        <!-- Sidebar -->
+
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="pt-5 mx-lg-5">
+        <div class="container-fluid mt-5">
+
+            <!-- Heading -->
+            <!-- Heading -->
+            <div class="card mb-4 wow fadeIn">
+
+                <!--Card content-->
+                <div class="card-body d-sm-flex justify-content-between">
+
+                    <h1 class="mb-2 mb-sm-0 pt-1">
+                        <span>Bem vindo a sua pagina de relatórios</span>
+                    </h1>
+
+
+                </div>
+
+            </div>
+            <!-- Heading -->
+
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-md-9 mb-4">
+
+                    <!--Card-->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header text-center">
+                            Desempenho Vendas
+                        </div>
+
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <canvas id="myChart"></canvas>
+
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-3 mb-4">
+
+                    <!--Card-->
+                    <div class="card mb-4">
+
+                        <!-- Card header -->
+                        <div class="card-header text-center">
+                            Desempenho Vendas
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+
+                            <canvas id="pieChart"></canvas>
+
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                    <!--Card-->
+                    <div class="card mb-4">
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!-- List group links -->
+                            <div class="list-group list-group-flush">
+                                <a class="list-group-item list-group-item-action waves-effect">Vendas
+                                    <span class="badge badge-success badge-pill pull-right">22%
+                                        <i class="fa fa-arrow-up ml-1"></i>
+                                    </span>
+                                </a>
+                                <a class="list-group-item list-group-item-action waves-effect">Lucro
+                                    <span class="badge badge-primary badge-pill pull-right">5%
+                                        <i class="fa fa-arrow-up ml-1"></i>
+                                    </span>
+                                </a>
+                                <!--
+                                <a class="list-group-item list-group-item-action waves-effect">Aprovação
+                                    <span class="badge badge-primary badge-pill pull-right">14</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action waves-effect">Mensagens
+                                    <span class="badge badge-primary badge-pill pull-right">8</span>
+                                </a>
+                                -->
+                            </div>
+                            <!-- List group links -->
+
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+
+               
+
+
+                <!--Grid column-->
+
+            </div>
+
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footerRolagem text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+        <!--Copyright-->
+        <div class="card-body text-center">
+            <h4 class="text-white">
+                <p>&copy; Copyright Comercial Control 2019 </p>
+            </h4>
+            <p class="h5 text-white"> for Ecommerce, marketplace, booking websites
+                and product landing pages</p> <br>
+        </div>
+        <!--/.Copyright-->
+    </footer>
+    <!--/.Footer-->
+
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="../../../static/JS/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../../static/JS/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../../static/JS/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../../static/JS/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
+
+    <!-- Charts -->
+    <script>
+        // Line
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+                datasets: [{
+                    label: 'Mês do ano',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        //pie
+        var ctxP = document.getElementById("pieChart").getContext('2d');
+        var myPieChart = new Chart(ctxP, {
+            type: 'pie',
+            data: {
+                labels: ["Caderno", "Lapis", "Brinquedo", "Artesanato", "Acessório"],
+                datasets: [{
+                    data: [300, 50, 100, 40, 120],
+                    backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+                    hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: false
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>
