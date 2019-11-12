@@ -1,0 +1,571 @@
+﻿<!DOCTYPE html>
+<html lang="br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Comercial Control</title>
+    <link rel="shortcut icon" href="../../../static/Imagens/logo/LogoComercialControl2.png" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../../static/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../../static/DashBoardCSS/area_adminstradorCSS/gerenciar_Usuarios.css" rel="stylesheet">
+    <link href="../../../static/DashBoardCSS/dashBoardCSS.css" rel="stylesheet">
+
+</head>
+
+
+<body class="grey lighten-3">
+    <!--<a name="form-anchor"></a>!-->
+    <form action="{{url_for('cadastrar_usuario')}}" method="post" enctype="multipart/form-data">
+        <!--Main Navigation-->
+        <header>
+
+            <!-- Navbar -->
+            <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+                <div class="container-fluid">
+
+                    <!-- Brand -->
+                    <a class="navbar-brand waves-effect" href="#">
+                        <strong class="blue-text">Gerenciar Usuarios </strong>
+                    </a>
+
+                    <!-- Mensagem Flash-->
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul id="messages" class="list_unstyled">
+                        {% for message in messages %}
+                        <div class="alert alert-success">{{ message }}</div>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+
+                    <!-- Botão Sair -->
+                    <a class="btn ml-2 btn-warning" href="{{url_for('logout')}}">Sair</a></li>
+
+                    <!-- Collapse -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+            <!-- Navbar -->
+
+            <!-- Sidebar -->
+            <div class="sidebar-fixed position-fixed">
+
+                <a class="logo-wrapper waves-effect">
+                    <img src="../../../static/Imagens/logo/LogoComercialControl2.png" class="img-fluid"
+                        alt="Comercial Control">
+                </a>
+
+                <div class="list-group list-group-flush">
+                    <a href="{{url_for('gerenciar_Estoque')}}"
+                        class="list-group-item list-group-item-action  waves-effect">
+                        <i class="fas fa-clipboard-check atividades_entregues icone"></i>Gerenciar Estoque</a>
+                    <a href="{{url_for('gerenciar_Fornecedores')}}"
+                        class="list-group-item list-group-item-action  waves-effect">
+                        <i class="fa fa-pie-chart mr-3"></i>Gerenciar Fornecedores</a>
+                    <a href="{{url_for('gerenciar_Usuarios')}}"
+                        class="list-group-item list-group-item-action active waves-effect">
+                        <i class="fa fa-user mr-3"></i>Gerenciar Usuarios</a>
+                    <a href="{{url_for ('calendario_geral')}}"
+                        class="list-group-item list-group-item-action waves-effect">
+                        <i class="fa fa-table mr-3"></i>Calendario </a>
+                    <a href="{{url_for('relatorios')}}" class="list-group-item list-group-item-action waves-effect">
+                        <i class="fab fa-bitcoin icone"></i>Relatórios</a>
+                    <a href="{{url_for('contato')}}" class="list-group-item list-group-item-action  waves-effect">
+                        <i class="fa fa-user mr-3"></i>Contato</a>
+                </div>
+
+            </div>
+
+
+            <!-- Sidebar -->
+
+        </header>
+        <!--Main Navigation-->
+
+        <!--Main layout-->
+        <main class="pt-5 mx-lg-5">
+
+            <div class="container-fluid mt-5">
+
+                <!-- Heading -->
+                <div class="card mb-4 wow fadeIn">
+
+                    <!--Card content-->
+                    <div>
+
+                        <h1>
+                            Bem vindo ao Gerenciamento de Usuario !
+                        </h1>
+
+
+                    </div>
+
+                </div>
+
+                <!-- Heading -->
+                <div class="container">
+                    <div class="row">
+                        <!--1 CARD -->
+                        <div class="col-lg-4">
+                            <div class="our-team-main">
+
+                                <!-- ############ INICIO 1° CARD (CADASTRAR USUARIO) ###########3-->
+                                <div id="cadastrarUsuario" class="modal fade in">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <a class="btn btn-default" data-dismiss="modal">Voltar<span
+                                                        class="glyphicon glyphicon-remove"></span></a>
+                                            </div>
+
+
+                                            <!--  INICIO CONTEUDO 1° CARD CADASTRAR USUARIO  -->
+
+
+                                            <div class="container">
+                                                <div class="row">
+
+
+
+                                                    <div class="cardTituloModal">
+
+                                                        <h2 class="modal-title">Preencha os campos para realizar um
+                                                            cadastro
+                                                        </h2>
+
+                                                    </div>
+
+
+
+                                                    <div class="modal-body">
+
+                                                        <!--###### DADOS PESSOAIS DE USUARIO ##### -->
+
+                                                        <div class="cardModalConteudo">
+                                                            <h2 class="modal-title">Dados do Usuario</h2>
+
+                                                            <div class="form-group">
+
+                                                                <input type="text" name="nome_usuario" id="nome_usuario"
+                                                                    class="form-control-dadosUsuario input-lg"
+                                                                    placeholder="Nome Sobrenome "
+                                                                    onblur="formatanomeUsuario(this.value)" autofocus required>
+
+                                                                <input type="number"
+                                                                    class="form-control-dadosUsuario  input-lg"
+                                                                    name="cep" id="cep" maxlength="8" placeholder="CEP">
+
+                                                                <input type="text"
+                                                                    class="form-control-dadosUsuario input-lg"
+                                                                    name="cidade" id="cidade" placeholder="Cidade">
+
+                                                                <div class="form-Select-UF">
+                                                                    <label for="" style="color: aliceblue">UF:
+                                                                        &nbsp</label><br>
+                                                                    <select class="form-list-UF" id="UF" name="uf">
+                                                                        <option value="">Selecione</option>
+                                                                        <option value="AC">AC</option>
+                                                                        <option value="AL">AL</option>
+                                                                        <option value="AP">AP</option>
+                                                                        <option value="AM">AM</option>
+                                                                        <option value="BA">BA</option>
+                                                                        <option value="CE">CE</option>
+                                                                        <option value="DF">DF</option>
+                                                                        <option value="ES">ES</option>
+                                                                        <option value="GO">GO</option>
+                                                                        <option value="MA">MA</option>
+                                                                        <option value="MS">MS</option>
+                                                                        <option value="MT">MT</option>
+                                                                        <option value="MG">MG</option>
+                                                                        <option value="PA">PA</option>
+                                                                        <option value="PB">PB</option>
+                                                                        <option value="PR">PR</option>
+                                                                        <option value="PE">PE</option>
+                                                                        <option value="PI">PI</option>
+                                                                        <option value="RJ">RJ</option>
+                                                                        <option value="RN">RN</option>
+                                                                        <option value="RS">RS</option>
+                                                                        <option value="RO">RO</option>
+                                                                        <option value="RR">RR</option>
+                                                                        <option value="SC">SC</option>
+                                                                        <option value="SP">SP</option>
+                                                                        <option value="SE">SE</option>
+                                                                        <option value="TO">TO</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <input type="text" name="endereco" id="endereco"
+                                                                    class="form-control-dadosUsuario input-lg"
+                                                                    placeholder="Endereço" required>
+
+                                                                <input type="text" name="numero_endereco"
+                                                                    id="numero_endereco"
+                                                                    class="form-control-dadosUsuario input-lg"
+                                                                    placeholder="N° de Endereço" required>
+
+                                                                <input type="tel" name="telefone" id="telefone"
+                                                                    pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}"
+                                                                    class="form-control-dadosUsuario input-lg"
+                                                                    placeholder="Telefone" required>
+
+                                                                <input type="tel" name="celular" id="celular"
+                                                                    pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}"
+                                                                    class="form-control-dadosUsuario input-lg"
+                                                                    placeholder="Celular" required>
+
+                                                                <div class="form-Select-Cargo">
+                                                                    
+                                                                    <label for="" style="color: aliceblue">Cargo:&nbsp</label><br>
+                                                                    
+                                                                    <select class="form-list-Cargo" id="cargo" name="cargo" required="required">
+                                                                        <option value="">Selecione</option>
+                                                                        <option value="Caixa">Caixa</option>
+                                                                        <option value="Estoquista">Estoquista</option>
+                                                                        <option value="Gerente">Gerente</option>
+                                                                    </select>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <!--###### FIM DADOS PESSOAIS DE USUARIO ##### -->
+
+                                                        <!--###### DADOS DE LOGIN DO USUARIO ##### -->
+
+                                                        <div class="cardModalConteudo">
+
+                                                            <h2 class="modal-title">Dados de login do usuario</h2>
+                                                            <div class="form-group">
+
+                                                                <input type="email" name="login_usuario"
+                                                                    id="email_Usuario"
+                                                                    class="form-control-loginUsuario input-lg"
+                                                                    placeholder="Digite o e-mail " required>
+
+                                                                <input type="password" name="senha_usuario"
+                                                                    id="senha_Usuario"
+                                                                    class="form-control-loginUsuario input-lg"
+                                                                    placeholder="Senha" required>
+                                                            </div>
+
+                                                            <!-- <div id="cardTipoUsuario"> -->
+                                                            <div class="radio">
+
+                                                                <div class="radio-primary">
+                                                                    <input type="radio" name="radio" value="1"
+                                                                        id="tipo_Usuario" checked />
+                                                                    <label for="tipo_Usuario">Funcionario</label>
+                                                                </div>
+
+                                                                <div class="radio-primary">
+                                                                    <input type="radio" name="radio" value="2"
+                                                                        id="tipo_adminstrador" checked />
+                                                                    <label for="tipo_adminstrador">Adminstrador</label>
+                                                                </div>
+                                                            </div>
+                                                            <!-- </div> -->
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="modal-footer">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-danger" data-dismiss="modal"><span
+                                                            class="glyphicon glyphicon-remove"></span>
+                                                        Cancelar</button>
+                                                    <button class="btn btn-primary"><span
+                                                            class="glyphicon glyphicon-check"></span>
+                                                        Salvar</button>
+                                                </div>
+                                            </div>
+
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dalog -->
+                                </div><!-- /.modal -->
+
+                                <a data-toggle="modal" href="#cadastrarUsuario" class="link">
+                                    <!--############# FIM MODAL CADASTRAR USUARIO ########  -->
+
+                                    <!--####### CONFIGURAÇÕES DO CARD -->
+                                    <div class="team-front">
+                                        <img src="../../../static/Imagens/icon/icone_de_cadastrar_usuario.png"
+                                            class="img-fluid" />
+                                        <h3>Cadastrar Usuario</h3>
+                                        <p>
+                                            <'Click para cadastrar um novo Usuario'>
+                                        </p>
+                                    </div>
+
+                                    <div class="team-back">
+                                        <span>
+                                            Cadastre um novo usuario no sistema!
+                                        </span>
+                                    </div>
+                                </a> <!-- Link Fecha Aqui-->
+                            </div>
+                        </div>
+
+                        <!-- ############ FIM CONFIGURAÇÕES DO CARD ###########-->
+
+                        <!--Fim 1° CARD-->
+                        <!-- CONSULTA DE USUARIOS (RAIZ DA PAGINA) -->
+
+                        <div class="our-team-main">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="panel panel-primary filterable">
+                                        <div class="panel-heading">
+                                            <div class="cardTituloModal">
+
+                                                <h2 class="modal-title">Consulte, altere ou inative
+                                                    Usuarios
+                                                    cadastrados !
+                                                </h2>
+                                            </div>
+
+                                            <div class="pull-right">
+                                                <button class="btn btn-default btn-xs btn-filter"><span
+                                                        class="glyphicon glyphicon-filter"></span>
+                                                    Filtrar</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- >>>>>>>>>>> PAGINAÇÃO DAS TABELAS <<<<<<<<<<<<<<<< -->
+
+                                        <!-- ########## FILTRAR O NUMERO DE COLUNAS QUE APARECE ########## -->
+
+                                        <div class="container">
+                                            <div class="form-group">
+
+                                                <!--		Show Numbers Of Rows 		-->
+                                                <select class="form-control" name="state" id="maxRows">
+                                                    <option value="5">5</option>
+                                                    <option value="10">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="50">50</option>
+                                                    <option value="70">70</option>
+                                                    <option value="100">100</option>
+                                                </select>
+                                            </div>
+
+
+
+                                            <!-- ########## FIM  FILTRAR O NUMERO DE COLUNAS QUE APARECE ########## -->
+
+
+                                            <table class="table table-class" id="table-id">
+
+                                                <thead>
+                                                    <tr class="filters">
+                                                        <!-- ISSO É DO EDITAR -->
+                                                        <th><input type="text" class="form-control" placeholder="Email"
+                                                                disabled></th>
+                                                        <th><input type="text" class="form-control" placeholder="Nome"
+                                                                disabled></th>
+                                                        <th><input type="text" class="form-control"
+                                                                placeholder="Tipo Usuario" disabled></th>
+                                                        <th><input type="text" class="form-control" placeholder="Cargo"
+                                                                disabled></th>
+                                                        <th><input type="datetime" class="form-control"
+                                                                placeholder="Data Cadastro" disabled></th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for exibe_usuario in lista_usuario %}
+                                                    <tr>
+                                                        <td class="email">{{exibe_usuario.email_usuario}}</td>
+                                                        <td class="name">{{exibe_usuario.nome_usuario}}</td>
+                                                        <td>{{exibe_usuario.id_tipopessoa}}</td>
+                                                        <td>teste</td>
+                                                        <td class="data">{{exibe_usuario.dt_cadastro}}</td>
+
+                                                        <td class="edit">
+                                                            <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#cadastrarUsuario" onclick="editar(this)"><span class="glyphicon glyphicon-edit"></span>Editar</a></td>
+                                                        
+                                                    <td class="text-center"><a class="btn btn-danger btn-xs" href="{{ url_for('excluir_usuario', id= exibe_usuario.cod_usuario) }}"><span
+                                                        class="glyphicon glyphicon-edit"></span>Excluir</a></td>
+
+
+
+                                                    </tr>
+                                                    {% endfor %}
+
+
+
+                                                </tbody>
+
+
+
+                                            </table>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="modal-footer">
+                                    
+
+                                        <!-- >>>>>>>>>>> PAGINAÇÃO DAS TABELAS ( NUMEROS) <<<<<<<<<<<<<<<< -->
+
+                                        <!--Start Pagination -->
+                                        <div class="alinhar-paginacao">
+                                            <div class='pagination-container'>
+                                                <nav>
+                                                    <ul class="pagination">
+
+                                                        <li class="page-link" data-page="prev">
+                                                            <a class="page-item"><span>
+                                                                < <span class="sr-only page-link">(current)
+                                                            </span></span></a>
+                                                        </li>
+                                                        <!--	Here the JS Function Will Add the Rows -->
+                                                        <li class="page-link" data-page="next" id="prev">
+                                                            <a class="page-item"><span> > <span class="sr-only ">(current)</span></span></a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+
+                                    <!-- >>>>>>>>>>> FIM PAGINAÇÃO DAS TABELAS <<<<<<<<<<<<<<<< -->
+
+                                    <div class="btn-group">
+
+
+                                    <button class="btn btn-danger" data-dismiss="modal"><span
+                                            class="glyphicon glyphicon-remove"></span>
+                                        Cancelar</button>
+                                    <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>
+                                        Concluir</button>
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <!-- Fim CONSULTA DE USUARIOS (RAIZ DA PAGINA) -->
+
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            <!--/.Card-->
+
+            </div>
+            <!--Grid column-->
+
+            <br><br><br><br><br><br><br><br><br>
+
+        </main>
+        <!--Main layout-->
+
+        <!--Footer-->
+        <footer class="page-footerRoolagem text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+            <!--Copyright-->
+            <div class="card-body text-center">
+                <h4 class="text-white">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &copy; Copyright Comercial Control 2019 </p>
+                </h4>
+                <p class="h5 text-white">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    for Ecommerce, marketplace, booking websites
+                    and product landing pages</p> <br>
+            </div>
+            <!--/.Copyright-->
+        </footer>
+        <!--/.Footer-->
+
+
+        <!-- SCRIPTS -->
+        <!-- JQuery -->
+        <script type="text/javascript" src="../../../static/JS/jquery-3.3.1.min.js"></script>
+        <!--JQuery para a mascara de telefone/celular-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="../../../static/JS/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="../../../static/JS/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="../../../static/JS/mdb.min.js"></script>
+        <!--Filtro da tabela (Gerenciar Usuarios)-->
+        <script type="text/javascript"
+            src="../../../static/JS/area_adminstrador/Funcionalidades/tabela_com_filtro_dinamico_CRUD.js"></script>
+        <!-- Mascara de nome e sobrenome -->
+        <script type="text/javascript"
+            src="../../../static/JS/area_adminstrador/Funcionalidades/mascara_Nome_Sobrenome.js"></script>
+        <!-- API CORREIOS (CEP) -->
+        <script type="text/javascript" src="../../../static/JS/area_adminstrador/Funcionalidades/API_Correios_CEP.js">
+        </script>
+        <!-- MASCARA DE TELEFONE E CELULAR -->
+        <script type="text/javascript"
+            src="../../../static/JS/area_adminstrador/Funcionalidades/mascara_Telefone_Celular.js"></script>
+
+        <!-- EDITAR CAMPOS DA TABELA -->
+        <script type="text/javascript"
+            src="../../../static/JS/area_adminstrador/gerenciar_Usuarios/funcao_editar_tabela_usuario.js"></script>
+
+        <!-- PAGINAÇÃO DAS TABELAS -->
+        <script type="text/javascript"
+            src="../../../static/JS/area_adminstrador/Funcionalidades/funcao_paginacao_da_tabela.js"></script>
+
+
+
+        
+
+        <!-- Initializations -->
+
+        <script>
+            // Animations initialization
+            new WOW().init();
+        </script>
+
+
+        <!-- PAINEL DE PAGAMENTO-->
+        <!-- https://bootsnipp.com/snippets/D2v11 -->
+
+
+</body>
+
+</html>
