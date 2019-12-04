@@ -1,0 +1,811 @@
+﻿<!DOCTYPE html>
+<html lang="br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Comercial Control</title>
+    <link rel="shortcut icon" href="../../../static/Imagens/logo/LogoComercialControl2.png" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../../static/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../../static/DashBoardCSS/area_adminstradorCSS/gerenciar_Estoque.css" rel="stylesheet">
+    <link href="../../../static/DashBoardCSS/dashBoardCSS.css" rel="stylesheet">
+</head>
+
+
+
+<body class="grey lighten-3">
+
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container-fluid">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="#">
+                    <strong class="blue-text">
+
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <ul id="messages" class="list_unstyled">
+                            {% for message in messages %}
+                            <div class="alert alert-success">{{ message }}</div>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endwith %}
+
+                    </strong>
+                </a>
+
+                <!-- Mensagem Flash-->
+
+
+                <!-- Botão Sair -->
+                <a class="btnSair ml-2 btn-warning" href="{{url_for('logout')}}">Sair</a></li>
+
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+        <!-- Sidebar -->
+        <div class="sidebar-fixed position-fixed">
+
+            <a class="logo-wrapper waves-effect">
+                <img src="../../../static/Imagens/logo/LogoComercialControl2.png" class="img-fluid"
+                    alt="Comecial Control">
+
+            </a>
+
+            <div class="list-group list-group-flush">
+                <a href="{{url_for('gerenciar_Estoque')}}"
+                    class="list-group-item list-group-item-action active waves-effect">
+                    <i class="fas fa-clipboard-check atividades_entregues icone"></i>Gerenciar Estoque</a>
+                <a href="{{url_for('gerenciar_Fornecedores')}}"
+                    class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-pie-chart mr-3"></i>Gerenciar Fornecedores</a>
+                <a href="{{url_for('gerenciar_Usuarios')}}" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-user mr-3"></i>Gerenciar Usuarios</a>
+                <a href="{{url_for('relatorios')}}" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fab fa-bitcoin icone"></i>Relatórios</a>
+                <a href="{{url_for('contato')}}" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-user mr-3"></i>Contato</a>
+            </div>
+
+        </div>
+
+
+        <!-- Sidebar -->
+
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="pt-5 mx-lg-5">
+
+        <div class="container-fluid mt-5">
+
+            <!-- Heading -->
+            <div class="card mb-4 wow fadeIn">
+
+                <!--Card content-->
+                <div>
+
+                    <h1>
+                        Bem vindo ao gerenciamento de Estoque !
+                    </h1>
+
+
+                </div>
+
+            </div>
+            <!-- Heading -->
+            <div class="container">
+                <div class="row">
+                    <!--1º curso-->
+
+
+                    <div class="col-lg-4">
+                        <div class="our-team-main">
+                            <!-- ############ INICIO 1° CARD (Cadastrar Produto) ###########-->
+
+                            <div id="cadastarProduto" class="modal fade in">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+
+
+                                            <a class="btn btn-default" data-dismiss="modal">Voltar<span
+                                                    class="glyphicon glyphicon-remove"></span></a>
+
+
+                                            <!-- ######### INICIO CONTEUDO 1° CARD ########## -->
+
+
+                                            <div class="cardTituloModal">
+
+
+                                                <h2 class="modal-title">Preencha os campos para realizar
+                                                    um cadastro
+                                                </h2>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-body">
+
+                                            <table class="table table-striped custab">
+
+                                                <div class="section-title">
+                                                    <span class="tag tag-colored">
+                                                        <h2>Dados Do Fornecedor &nbsp </h2>
+                                                    </span>
+                                                </div>
+
+                                                <div class="cardTituloModal">
+
+
+
+                                                    <div class="form-group">
+                                                        <form id="form" action="{{url_for('cadastrar_Produto')}}"
+                                                            method="post" enctype="multipart/form-data">
+                                                            <!--Aqui começa a pegar os valores para criar a tabela dinamica-->
+
+
+
+                                                            <input type="text" name="cnpj" id="cnpj"
+                                                                class="form-control-CNPJ input-lg" placeholder="CNPJ" required
+                                                                autofocus>
+
+
+                                                            <input type="text" name="nomeFornecedor" id="nomeFornecedor"
+                                                                class="form-control-texto input-lg" readonly=“true”
+                                                                value="" placeholder="Nome Do Fornecedor ">
+
+
+                                                            <label for="dataNF" style="color: aliceblue">DT nota
+                                                                fiscal:</label>
+                                                            <input type="date" class="form-control-dataNF input-lg"
+                                                                name="data_nota" id="data_nota">
+
+
+                                                            <input type="number" class="form-control-NF input-lg"
+                                                                name="numeroNotaFiscal" id="numeroNotaFiscal"
+                                                                placeholder="Número da Nota Fiscal">
+
+
+                                                    </div>
+                                                </div>
+                                                <hr class="colorgraph">
+                                                </hr> <!-- Linha colorida Divisória-->
+
+                                                <div class="section-title">
+                                                    <span class="tag tag-colored">
+                                                        <h2>Dados do Produto</h2>
+                                                    </span>
+
+                                                </div>
+
+                                                <div class="cardModalConteudo">
+                                                    <div class="form-group">
+
+
+                                                        <input type="number" name="codigoProduto" id="codigoProduto"
+                                                            class="form-control-Cod input-lg"
+                                                            placeholder="Digite o código do Produto">
+
+                                                        <input type="text" name="nomeProduto" id="nomeProduto"
+                                                            class="form-control-texto input-lg"
+                                                            placeholder="Nome do produto">
+
+                                                        <input type="text" name="valorProduto" id="valorProduto"
+                                                            class="form-control-texto input-lg"
+                                                            onKeyUp="mascaraMoeda(this, event), multiplicar();" value=""
+                                                            placeholder="Digite o valor do produto ">
+
+                                                        <br>
+                                                        <input type="number" name="qtdProduto" id="qtdProduto"
+                                                            onChange="multiplicar();"
+                                                            class="form-control-QTDProduto input-lg"
+                                                            placeholder="Quantidade do produto" min="1">
+
+                                                        <br><br>
+                                                        <div class="form-Select-MarcaProduto">
+
+                                                            <label for="MarcaProduto" style="color: aliceblue">Marca do
+                                                                produto</label><br>
+                                                            <select class="form-list-marcaProduto" name="marca"
+                                                                id="marca">
+
+                                                                <option value="">Selecione a marca do produto </option>
+                                                                {% for Marca_Produto in lista_marca %}
+                                                                <option value="{{Marca_Produto.id_marca}}">
+                                                                    {{Marca_Produto.descricao}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-6 col-md-6">
+                                                            <div class="form-group">
+
+                                                                <div class="form-Select-CategoriaProduto">
+
+                                                                    <label for="CategoriaProduto"
+                                                                        style="color: aliceblue">Categoria do
+                                                                        produto</label>
+                                                                    <select class="form-list-categoriaProduto"
+                                                                        name="categoriaproduto" id="categoriaproduto">
+                                                                        <option value="">Selecione a catgoria do produto
+                                                                        </option>
+                                                                        {% for Categoria_Produto in lista_categoria %}
+                                                                        <option
+                                                                            value="{{Categoria_Produto.id_categoria}}">
+                                                                            {{Categoria_Produto.descricao}}</option>
+
+                                                                        {% endfor %}
+                                                                    </select>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-6 col-md-6">
+                                                            <div class="form-group">
+
+                                                                <div class="form-ValorTotal">
+                                                                    <label for="sel1" style="color: aliceblue">Valor
+                                                                        Total</label>
+
+                                                                    <input type="text" name="valorTotal" id="valorTotal"
+                                                                        class="form-list input-lg"
+                                                                        onKeyUp="mascaraMoeda(this, event)" value=""
+                                                                        placeholder="Valor somado ">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        </thead>
+
+
+
+                                        <div class="btn-group">
+                                            <button id="botaoAdicionar" type="button" value="Adicionar"
+                                                class="btn btn-primary"><span
+                                                    class="glyphicon glyphicon-check"></span>Adicionar </button>
+                                        </div>
+
+
+
+                                        <hr class="colorgraph"> <!-- Linha colorida Divisória-->
+
+
+                                        <!-- ######## COMEÇO CARD (Últimos Produtos) ###### -->
+
+
+                                        <div class="section-title">
+                                            <span class="tag tag-colored">
+                                                <h2 class>Informações do Lote atual &nbsp</h2>
+                                            </span>
+
+                                        </div>
+
+                                        <!-- ########### FIM CARD (ULTIMOS PRODUTOS) ##########  -->
+
+                                    </div>
+
+                                    <!-- FIM MODAL CADASTRAR PRODUTO-->
+
+
+                                    <!-- ########### COMEÇO TABELA DE PRODUTOS ########### -->
+                                    <section class="container mt-5 mb-5">
+
+                                        <table class="table table-class" id="tableLote">
+
+
+                                            <!-- ########### FIM TABELA DE PRODUTOS ########### -->
+
+                                        </table>
+                                    </section>
+
+                                    <!--FIM DO QUADRADO DO CADASTRAR PRODUTO (NÃO APAGAR)-->
+
+                                    </table>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <div class="btn-group">
+
+                                        <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>
+                                            Cadastrar</button> </form>
+                                        <button class="btn btn-danger" data-dismiss="modal"><span
+                                                class="glyphicon glyphicon-remove"></span>
+                                            Sair</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dalog -->
+
+                    </div><!-- /.modal -->
+
+                    <a data-toggle="modal" href="#cadastarProduto" class="link">
+
+                        <!--############# FIM CONTEUDO 1° CARD ########  -->
+
+
+                        <!--####### CONFIGURAÇÕES DA SALA -->
+                        <div class="team-front">
+                            <img src="../../../static/Imagens/icon/cart-16.png" class="img-fluid" />
+                            <h3>Cadastrar Produto</h3>
+                            <p>
+                                <'Click parar cadastrar'>
+                            </p>
+                        </div>
+
+                        <div class="team-back">
+                            <span>
+                                Realiza o cadastro de um novo produto !
+                            </span>
+                        </div>
+                </div> </a> <!-- Link Fecha Aqui-->
+            </div>
+
+            <!--Fim 1° Card-->
+
+            <!-- 3° CARD-->
+            <div class="col-lg-4">
+                <div class="our-team-main">
+
+
+                    <!-- ############ INICIO 3° CARD (CADASTRAR CATEGORIA) ###########-->
+                    <div id="myModalSala3" class="modal fade in">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <a class="btn btn-default" data-dismiss="modal">Voltar<span
+                                            class="glyphicon glyphicon-remove"></span></a>
+
+
+
+                                    <!-- ###### INICIO CONTEUDO 3° CARD ######-->
+
+                                    <div class="cardTituloModal">
+
+                                        <h2 class="modal-title">Preencha os campos para realizar um
+                                            cadastro
+                                        </h2>
+                                    </div>
+                                </div>
+
+                                <div class="modal-body">
+                                    <table class="table table-striped custab">
+
+
+                                        <div class="cardModalConteudo">
+                                            <h2 class="modal-title">Cadastre uma Categoria de produto
+                                            </h2>
+
+
+                                            <form action="{{url_for('cadastrar_Categoria')}}" method="post"
+                                                enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <input type="number" name="idCategoria" id="idCategoria"
+                                                        class="form-control-Cod input-lg"
+                                                        placeholder="Digite o código da categoria">
+
+                                                    <input type="text" name="descricaoCategoria" id="descricaoCategoria"
+                                                        class="form-control-texto-CategoriaProduto input-lg"
+                                                        placeholder="Nome Da categoria">
+
+                                                </div>
+
+
+
+                                    </table>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <div class="btn-group">
+                                        <button class="btn btn-danger" data-dismiss="modal"><span
+                                                class="glyphicon glyphicon-remove"></span> Cancelar</button>
+
+                                        <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>
+                                            Salvar</button>
+                                    </div>
+                                </div>
+                                </form>
+
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dalog -->
+
+                    </div><!-- /.modal -->
+
+                    <a data-toggle="modal" href="#myModalSala3" class="link">
+                        <!--############# FIM MODAL DA TERCEIRA TURMA-MANHÃ ########  -->
+
+                        <!--####### CONFIGURAÇÕES DA SALA -->
+                        <div class="team-front">
+                            <img src="../../../static/Imagens/icon/icone_de_cadastrar_categoria.png"
+                                class="img-fluid" />
+                            <h3>Cadastrar Categoria</h3>
+                            <p>
+                                <'Click para cadastrar Categoria'>
+                            </p>
+                        </div>
+
+                        <div class="team-back">
+                            <span>
+                                Cadastre uma Categoria !
+                            </span>
+                        </div>
+
+                    </a> <!-- Link Fecha Aqui-->
+                </div>
+            </div>
+            <!--Fim 3º-->
+
+            <!-- 4° CARD ( CADASTRAR MARCA) -->
+            <div class="col-lg-4">
+                <div class="our-team-main">
+
+                    <!-- ############ INICIO MODAL 4° CARD ###########3-->
+                    <div id="myModalSala4" class="modal fade in">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <a class="btn btn-default" data-dismiss="modal">Voltar<span
+                                            class="glyphicon glyphicon-remove"></span></a>
+                                    <div class="cardTituloModal">
+
+
+
+                                        <!-- ###### INICIO CONTEUDO 4° CARD ######-->
+
+                                        <h2 class="modal-title">Preencha os campos para realizar um
+                                            cadastro
+                                        </h2>
+
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table table-striped custab">
+
+
+                                        <div class="cardModalConteudo">
+                                            <h2 class="modal-title">Cadastre uma Marca de produto
+                                            </h2>
+
+                                            <form action="{{url_for('cadastrar_Marca')}}" method="post"
+                                                enctype="multipart/form-data">
+
+                                                <div class="form-group">
+
+                                                    <input type="number" name="id_marca" id="display_name"
+                                                        class="form-control-texto-CategoriaProduto input-lg"
+                                                        placeholder="Digite o código da marca" tabindex="3">
+
+                                                    <input type="text" name="descricaomarca" id="display_name"
+                                                        class="form-control-texto-CategoriaProduto input-lg"
+                                                        placeholder="Nome da marca " tabindex="3">
+                                                </div>
+
+
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="btn-group">
+                                        <button class="btn btn-danger" data-dismiss="modal"><span
+                                                class="glyphicon glyphicon-remove"></span>
+                                            Cancelar</button>
+                                        <button class="btn btn-primary"><span class="glyphicon glyphicon-check"></span>
+                                            Salvar</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dalog -->
+                    </div><!-- /.modal -->
+
+                    <a data-toggle="modal" href="#myModalSala4" class="link">
+                        <!--############# FIM  4° CARD (CADASTRAR MARCA)   ########  -->
+
+                        <!--####### CONFIGURAÇÕES DA SALA -->
+                        <div class="team-front">
+                            <img src="../../../static/Imagens/icon/icone_de_cadastrar_marca.png" class="img-fluid" />
+                            <h3>Cadastrar Marca</h3>
+                            <p>
+                                <'Click para cadastrar uma nova Marca'>
+                            </p>
+                        </div>
+
+                        <div class="team-back">
+                            <span>
+                                Cadastre uma Marca!
+                            </span>
+                        </div>
+
+                    </a> <!-- Link Fecha Aqui-->
+                </div>
+            </div>
+            <!--Fim 4º-->
+
+            <!--Consultar Produto CARD -->
+
+            <div class="our-team-main">
+
+                <!-- ############ INICIO 2° CARD (GERENCIAR PRODUTO) ###########3-->
+
+                <!--  INCIO TABELA 2 MODAL (CRUD) -->
+
+
+                <div class="container">
+                    <div class="row">
+
+
+                        <!-- ########## FILTRAR O NUMERO DE COLUNAS QUE APARECE ########## -->
+
+
+                        <div class="form-group">
+
+                            <!--        Show Numbers Of Rows        -->
+                            <div class="form-control-paginacao" name="state" id="maxRows">
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- ########## FIM  FILTRAR O NUMERO DE COLUNAS QUE APARECE ########## -->
+
+                        <div class="panel panel-primary filterable">
+                            <div class="panel-heading">
+                                <div class="cardTituloModal">
+
+                                    <h2 class="modal-title">Consulte, altere ou exclua
+                                        produtos
+                                        cadastrados !
+                                    </h2>
+                                </div>
+
+                                <div class="pull-right">
+                                    <button class="btn btn-default btn-xs btn-filter"><span
+                                            class="glyphicon glyphicon-filter"></span>
+                                        Filtrar</button>
+                                </div>
+                            </div>
+                            <table class="table table-class" id="table-id">
+                                <thead>
+                                    <tr class="filters">
+                                        <th class="size-th"><input type="text" class="form-control" placeholder="Cod"
+                                                disabled></th>
+                                        <th class="size-th"><input type="text" class="form-control"
+                                                placeholder="Produto" disabled></th>
+                                        <th class="size-th"><input type="text" class="form-control" placeholder="Marca"
+                                                disabled></th>
+                                        <th class="size-th"><input type="text" class="form-control"
+                                                placeholder="Categoria" disabled></th>
+                                        <th class="size-th"><input type="text" class="form-control"
+                                                placeholder="Valor Prod" disabled></th>
+                                        <th class="size-th"><input type="text" class="form-control" placeholder="QTD"
+                                                disabled></th>
+                                        <th class="size-th"><input type="text" class="form-control"
+                                                placeholder="Valor Total" disabled></th>
+                                        <th class="size-th"><input type="text" class="form-control" placeholder="CNPJ"
+                                                disabled></th>
+                                        <th class="size-th"><input type="text" class="form-control" placeholder="NF"
+                                                disabled></th>
+                                        <th class="size-th"><input type="datetime" class="form-control"
+                                                placeholder="Data Cad" disabled>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for Exibe_Produto in Lista_Produto %}
+                                    <tr>
+                                        
+                                        <td data-nome="{{Exibe_Produto.codigo}}" class='id_produto'>{{Exibe_Produto.codigo}}</td>
+                                        <td>{{Exibe_Produto.produto}}</td>
+                                        <td>{{Exibe_Produto.marca}}</td>
+                                        <td>{{Exibe_Produto.categoria}}</td>
+                                        <td>R$ {{Exibe_Produto.valor_produto}}</td>
+                                        <td>{{Exibe_Produto.quantidade}}</td>
+                                        <td>R$ {{Exibe_Produto.valor_total}}</td>
+                                        <td>{{Exibe_Produto.cnpj}}</td>
+                                        <td>{{Exibe_Produto.num_notafiscal}}</td>
+                                        <td>{{Exibe_Produto.data_cadastro}}</td>
+
+
+                                        <td class="edit">
+                                            <a class='btn btn-success btn-xs' data-toggle="modal"
+                                                data-target="#cadastarProduto" onclick="buscar_produto_por_id(this)"><span
+                                                    class="glyphicon glyphicon-edit"></span>Editar</a>
+
+                                        <td class="text-center"><a class='btn btn-danger btn-xs'
+                                                href="{{ url_for('excluir_produto', id= Exibe_Produto.codigo) }}"><span
+                                                    class="glyphicon glyphicon-edit"></span>Excluir</a>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+
+                    <!-- >>>>>>>>>>> PAGINAÇÃO DAS TABELAS ( NUMEROS) <<<<<<<<<<<<<<<< -->
+
+
+                    <!--		Start Pagination -->
+                    <div class="alinhar-paginacao">
+                        <div class='pagination-container'>
+                            <nav>
+                                <ul class="pagination">
+
+                                    <li class="page-link" data-page="prev">
+                                        <a><span>
+                                                < <span class="sr-only page-link">(current)
+                                            </span></span></a>
+                                    </li>
+                                    <!--    Here the JS Function Will Add the Rows -->
+                                    <li class="page-link" data-page="next" id="prev">
+                                        <a class="page-item"><span> > <span class="sr-only ">(current)</span></span></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+
+                    <!-- >>>>>>>>>>> FIM PAGINAÇÃO DAS TABELAS <<<<<<<<<<<<<<<< -->
+
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+        </div><!-- /.modal -->
+        </div>
+
+
+        <!-- ############ FIM CONFIGURAÇÕES DA SALA ###########-->
+
+        <!--Fim 2° CARD-->
+
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <!--/.Card-->
+        </div>
+        <!--Grid column-->
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footerRoolagem text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+        <!--Copyright-->
+        <div class="card-body text-center">
+            <h4 class="text-white">
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &copy; Copyright Comercial Control 2019 </p>
+            </h4>
+            <p class="h5 text-white">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                for Ecommerce, marketplace, booking websites
+                and product landing pages</p> <br>
+        </div>
+        <!--/.Copyright-->
+    </footer>
+    <!--/.Footer-->
+
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="../../../static/JS/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../../static/JS/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../../static/JS/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../../static/JS/mdb.min.js"></script>
+    <!--Mascaras de MOEDA-->
+    <script type="text/javascript"
+        src="../../../static/JS/area_adminstrador/gerenciar_Estoque/mascaras_de_formulario.js"></script>
+    <!-- Mutiplicação de Valor de Produto X Quantidade de produto (com ponto e virgula)-->
+    <script type="text/javascript"
+        src="../../../static/JS/area_adminstrador/gerenciar_Estoque/calculo_mutiplicacao_precoProduto_x_quantidadeProduto.js">
+    </script>
+
+
+    <!---Filtro da tabela (gerenciar produto) -->
+    <script type="text/javascript" src="../../../static/JS/area_adminstrador/gerenciar_Estoque/tabela_com_filtro.js">
+    </script>
+
+    <!-- Criação de tabela dinâmica CONSULTA -->
+    <script type="text/javascript"
+        src="../../../static/JS/area_adminstrador/gerenciar_Estoque/criacao_tabela_dinamica.js"></script>
+
+    <!-- Criação de tabela dinâmica para o LOTE
+<script type="text/javascript" src="../../../static/JS/area_adminstrador/gerenciar_Estoque/tabela_dinamica_criar_lote.js"></script>
+-->
+
+
+    <!-- EDITAR CAMPOS DA TABELA -->
+    <script type="text/javascript"
+        src="../../../static/JS/area_adminstrador/gerenciar_Estoque/funcao_editar_tabela_Produto.js"></script>
+
+  
+    <!-- INFORMAÇÕES  DO MODAL -->
+    <script type="text/javascript"
+    src="../../../static/JS/area_adminstrador/Funcionalidades/busca_produto_por_id.js"></script>
+    
+  
+  
+  
+        <!-- PAGINAÇÃO DAS TABELAS -->
+
+    <script type="text/javascript"
+        src="../../../static/JS/area_adminstrador/gerenciar_Estoque/funcao_paginacao_da_tabela.js"></script>
+
+
+    <!-- CONSULTAR FORNECEDOR -->
+    <script type="text/javascript"
+        src="../../../static/JS/area_adminstrador/Funcionalidades/consulta_fornecedor.js"></script>
+
+
+    <!-- Initializations -->
+    <script>
+        // Animations initialization
+        new WOW().init();
+    </script>
+
+
+    <!-- PAINEL DE PAGAMENTO-->
+    <!-- https://bootsnipp.com/snippets/D2v11 -->
+
+
+</body>
+
+</html>
